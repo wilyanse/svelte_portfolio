@@ -1,1 +1,2 @@
-# svelte_portfolio
+# This repository serves as a revamped version of my previous portfolio website
+## The website should take in data from a JSON file containing my details, which is parsed and converted to a frontend in SvelteKit + SkeletonUI
