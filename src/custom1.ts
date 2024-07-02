@@ -2,14 +2,14 @@
 import type { CustomThemeConfig } from '@skeletonlabs/tw-plugin';
 export const custom1: CustomThemeConfig = {
 	name: 'custom1',
-	properties: {
+    properties: {
 		// =~= Theme Properties =~=
 		"--theme-font-family-base": `Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
 		"--theme-font-family-heading": `Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
 		"--theme-font-color-base": "0 0 0",
 		"--theme-font-color-dark": "255 255 255",
 		"--theme-rounded-base": "9999px",
-		"--theme-rounded-container": "8px",
+		"--theme-rounded-container": "24px",
 		"--theme-border-base": "1px",
 		// =~= Theme On-X Colors =~=
 		"--on-primary": "255 255 255",
@@ -20,17 +20,17 @@ export const custom1: CustomThemeConfig = {
 		"--on-error": "255 255 255",
 		"--on-surface": "255 255 255",
 		// =~= Theme Colors  =~=
-		// primary | #124e56 
-		"--color-primary-50": "219 228 230", // #dbe4e6
-		"--color-primary-100": "208 220 221", // #d0dcdd
-		"--color-primary-200": "196 211 213", // #c4d3d5
-		"--color-primary-300": "160 184 187", // #a0b8bb
-		"--color-primary-400": "89 131 137", // #598389
-		"--color-primary-500": "18 78 86", // #124e56
-		"--color-primary-600": "16 70 77", // #10464d
-		"--color-primary-700": "14 59 65", // #0e3b41
-		"--color-primary-800": "11 47 52", // #0b2f34
-		"--color-primary-900": "9 38 42", // #09262a
+		// primary | #1d6d77 
+		"--color-primary-50": "221 233 235", // #dde9eb
+		"--color-primary-100": "210 226 228", // #d2e2e4
+		"--color-primary-200": "199 219 221", // #c7dbdd
+		"--color-primary-300": "165 197 201", // #a5c5c9
+		"--color-primary-400": "97 153 160", // #6199a0
+		"--color-primary-500": "29 109 119", // #1d6d77
+		"--color-primary-600": "26 98 107", // #1a626b
+		"--color-primary-700": "22 82 89", // #165259
+		"--color-primary-800": "17 65 71", // #114147
+		"--color-primary-900": "14 53 58", // #0e353a
 		// secondary | #0ee2f1 
 		"--color-secondary-50": "219 251 253", // #dbfbfd
 		"--color-secondary-100": "207 249 252", // #cff9fc
@@ -86,17 +86,17 @@ export const custom1: CustomThemeConfig = {
 		"--color-error-700": "131 50 95", // #83325f
 		"--color-error-800": "104 40 76", // #68284c
 		"--color-error-900": "85 33 62", // #55213e
-		// surface | #2f666f 
-		"--color-surface-50": "224 232 233", // #e0e8e9
-		"--color-surface-100": "213 224 226", // #d5e0e2
-		"--color-surface-200": "203 217 219", // #cbd9db
-		"--color-surface-300": "172 194 197", // #acc2c5
-		"--color-surface-400": "109 148 154", // #6d949a
-		"--color-surface-500": "47 102 111", // #2f666f
-		"--color-surface-600": "42 92 100", // #2a5c64
-		"--color-surface-700": "35 77 83", // #234d53
-		"--color-surface-800": "28 61 67", // #1c3d43
-		"--color-surface-900": "23 50 54", // #173236
+		// surface | #525252 
+		"--color-surface-50": "229 229 229", // #e5e5e5
+		"--color-surface-100": "220 220 220", // #dcdcdc
+		"--color-surface-200": "212 212 212", // #d4d4d4
+		"--color-surface-300": "186 186 186", // #bababa
+		"--color-surface-400": "134 134 134", // #868686
+		"--color-surface-500": "82 82 82", // #525252
+		"--color-surface-600": "74 74 74", // #4a4a4a
+		"--color-surface-700": "62 62 62", // #3e3e3e
+		"--color-surface-800": "49 49 49", // #313131
+		"--color-surface-900": "40 40 40", // #282828
 		
 	}
 }
