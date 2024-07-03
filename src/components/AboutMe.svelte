@@ -1,15 +1,20 @@
 <script>
 	import Wrapper from "./Wrapper.svelte";
-
+    import logo from '$lib/images/logo.png';
 </script>
 <Wrapper id="About Me">
-    <div class="grid grid-rows-5 gap-3 place-items-center p-20 space-y-5">
+    <div class="grid grid-rows-5 gap-3 place-items-center p-20 space-y-5 min-h-full">
         <div class="variant-ghost-secondary p-10 self-center">
             <h1>ABOUT ME</h1>
         </div>
-        <div class="space-y-5">
+        <div class="space-y-5 text-pretty text-center my-5">
             <h2>
-                My name's <a href="/" class="variant-glass-secondary p-3"><strong>Wil</strong>l Br<strong>yan</strong> Jo<strong>se</strong></a>, and I'm a big data fan, aspiring to one day become a <strong>Data Scientist</strong>.
+                My name's
+                <a href="/" class="variant-glass-secondary p-3 inline">
+                    <img src={logo} alt="Face logo" />
+                    <strong>Wil</strong>l Br<strong>yan</strong> Jo<strong>se</strong>
+                </a>,
+                and I'm a big data fan, aspiring to one day become a <strong>Data Scientist</strong>.
             </h2>
             <h3>
                 I've worked in several fields of computer science, which you will find out about the more that you scroll through this portfolio website.
@@ -63,7 +68,7 @@
     }
 
     h2 {
-        @apply h2;
+        @apply h2 text-3xl;
     }
 
     h3 {
@@ -72,5 +77,9 @@
 
     strong {
         @apply font-bold;
+    }
+
+    img {
+        @apply max-w-10 h-auto inline;
     }
 </style>
