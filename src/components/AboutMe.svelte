@@ -15,7 +15,7 @@
                 I've worked in several fields of computer science, which you will find out about the more that you scroll through this portfolio website.
             </h3>
         </div>
-        <div class="row-span-3 row-start-3 grid grid-cols-2 space-x-10">
+        <div class="row-span-2 row-start-3 grid grid-cols-2 space-x-10">
             <div class="variant-ghost-primary w-full">
                 <h2 class="font-semibold p-5">What have I <strong>done?</strong></h2>
                 <div class="p-5 space-y-5">
@@ -51,6 +51,9 @@
                 </div>
             </div>
         </div>
+        <div>
+            <a href="/" class="btn variant-ghost-secondary text-xl font-bold self-center mx-auto">Interested in my professional background?</a>
+        </div>
     </div>
 </Wrapper>
 
@@ -68,6 +71,6 @@
     }
 
     strong {
-        @apply font-bold text-secondary-300;
+        @apply font-bold;
     }
 </style>
