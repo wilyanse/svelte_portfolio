@@ -3,8 +3,8 @@
     import outlineImg from '$lib/images/bigLogo.png';
 </script>
 <Wrapper id="Landing Page">
-    <div class="grid grid-cols-3 min-h-full m-10 space-x-5 place-items-center p-10 min-w-full">
-        <div class="min-h-full space-y-5 grid grid-rows-4">
+    <div class="grid grid-cols-3 min-h-full m-10 p-10 min-w-full">
+        <div class="w-80 h-auto space-y-5 grid grid-rows-6 align-top mx-auto">
             <h1>Hi.</h1>
             <hr class="!border-t-8 !border-double bg-white" />
             <h2 class="row-span-2">You've made it to my portfolio.</h2>
@@ -12,7 +12,13 @@
         </div>
 
         <img src={outlineImg} alt="Outline logo" />
-        <h1>Will Jose. At your service.</h1>
+
+        <div class="w-80 h-auto space-y-5 grid grid-rows-3 align-top mx-auto">
+            <h1 class="text-xl">Will Jose,</h1>
+            <h2 class="">at your service.</h2>
+            <a href="/">More about Will's portfolio</a>
+        </div>
+        
     </div>
 </Wrapper>
 
@@ -22,7 +28,7 @@
     }
 
     h1 {
-        @apply h1 font-bold text-9xl;
+        @apply h1 font-bold text-8xl;
     }
     
     h2 {
