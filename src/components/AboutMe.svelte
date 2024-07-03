@@ -3,7 +3,7 @@
 
 </script>
 <Wrapper id="About Me">
-    <div class="grid grid-rows-5 place-items-center p-20 space-y-5">
+    <div class="grid grid-rows-5 gap-3 place-items-center p-20 space-y-5">
         <div class="variant-ghost-secondary p-10 self-center">
             <h1>ABOUT ME</h1>
         </div>
@@ -15,7 +15,7 @@
                 I've worked in several fields of computer science, which you will find out about the more that you scroll through this portfolio website.
             </h3>
         </div>
-        <div class="row-span-2 row-start-3 grid grid-cols-2 space-x-10">
+        <div class="row-span-2 row-start-3 grid grid-cols-2 gap-40">
             <div class="variant-ghost-primary w-full">
                 <h2 class="font-semibold p-5">What have I <strong>done?</strong></h2>
                 <div class="p-5 space-y-5">
