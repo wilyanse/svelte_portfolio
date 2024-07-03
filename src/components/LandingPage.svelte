@@ -36,6 +36,6 @@
     }
 
     a {
-        @apply btn variant-ghost-tertiary max-w-xs text-xl font-bold self-center mx-auto;
+        @apply btn variant-ghost-secondary max-w-xs text-xl font-bold self-center mx-auto;
     }
 </style>
