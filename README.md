@@ -21,7 +21,7 @@
     - [ ] Phone Icon: copy to clipboard (Phone number)
 
 ### Landing Page
-- [ ] Grabs attention
+- [x] Grabs attention
 - [x] Outline logo of self
 - [x] Text: "Hi there you've made it to my portfolio"
 - [x] Button: "More about Will's portfolio"
