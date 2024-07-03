@@ -2,7 +2,7 @@
 import type { CustomThemeConfig } from '@skeletonlabs/tw-plugin';
 export const custom1: CustomThemeConfig = {
 	name: 'custom1',
-    properties: {
+	properties: {
 		// =~= Theme Properties =~=
 		"--theme-font-family-base": `Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
 		"--theme-font-family-heading": `Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
@@ -14,7 +14,7 @@ export const custom1: CustomThemeConfig = {
 		// =~= Theme On-X Colors =~=
 		"--on-primary": "255 255 255",
 		"--on-secondary": "0 0 0",
-		"--on-tertiary": "0 0 0",
+		"--on-tertiary": "255 255 255",
 		"--on-success": "0 0 0",
 		"--on-warning": "0 0 0",
 		"--on-error": "255 255 255",
@@ -42,17 +42,17 @@ export const custom1: CustomThemeConfig = {
 		"--color-secondary-700": "11 170 181", // #0baab5
 		"--color-secondary-800": "8 136 145", // #088891
 		"--color-secondary-900": "7 111 118", // #076f76
-		// tertiary | #52f689 
-		"--color-tertiary-50": "229 254 237", // #e5feed
-		"--color-tertiary-100": "220 253 231", // #dcfde7
-		"--color-tertiary-200": "212 253 226", // #d4fde2
-		"--color-tertiary-300": "186 251 208", // #bafbd0
-		"--color-tertiary-400": "134 249 172", // #86f9ac
-		"--color-tertiary-500": "82 246 137", // #52f689
-		"--color-tertiary-600": "74 221 123", // #4add7b
-		"--color-tertiary-700": "62 185 103", // #3eb967
-		"--color-tertiary-800": "49 148 82", // #319452
-		"--color-tertiary-900": "40 121 67", // #287943
+		// tertiary | #1916d4 
+		"--color-tertiary-50": "221 220 249", // #dddcf9
+		"--color-tertiary-100": "209 208 246", // #d1d0f6
+		"--color-tertiary-200": "198 197 244", // #c6c5f4
+		"--color-tertiary-300": "163 162 238", // #a3a2ee
+		"--color-tertiary-400": "94 92 225", // #5e5ce1
+		"--color-tertiary-500": "25 22 212", // #1916d4
+		"--color-tertiary-600": "23 20 191", // #1714bf
+		"--color-tertiary-700": "19 17 159", // #13119f
+		"--color-tertiary-800": "15 13 127", // #0f0d7f
+		"--color-tertiary-900": "12 11 104", // #0c0b68
 		// success | #c2ac79 
 		"--color-success-50": "246 243 235", // #f6f3eb
 		"--color-success-100": "243 238 228", // #f3eee4
