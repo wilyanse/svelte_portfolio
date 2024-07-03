@@ -28,17 +28,17 @@
     - [ ] Scrolls to 'About me' section
 
 ### About me
-- [ ] Text: "My name's Will Bryan Jose"
-    - [ ] Highlight 'Wil' 'yan' 'se'
-- [ ] Text: "I'm a big data fan, aspiring to one day become a data scientist. I've worked in several fields of computer science, which you will find out about the more that you scroll through this portfolio website."
-- [ ] Text: "What have I done?"
-    - [ ] Text: "Aspired to become a game developer"
-    - [ ] Text: "Worked with software development"
-    - [ ] Text: "Transitioned to web development"
-- [ ] Text: "What do I aim to do?"
-    - [ ] Text: "Work with data professionally"
-    - [ ] Text: "Develop my skills in other fields of Computer Science as a hobby"
-    - [ ] Text: "Leave my mark on the world!"
+- [x] Text: "My name's Will Bryan Jose"
+    - [x] Highlight 'Wil' 'yan' 'se'
+- [x] Text: "I'm a big data fan, aspiring to one day become a data scientist. I've worked in several fields of computer science, which you will find out about the more that you scroll through this portfolio website."
+- [x] Text: "What have I done?"
+    - [x] Text: "Aspired to become a game developer"
+    - [x] Text: "Worked with software development"
+    - [x] Text: "Transitioned to web development"
+- [x] Text: "What do I aim to do?"
+    - [x] Text: "Work with data professionally"
+    - [x] Text: "Develop my skills in other fields of Computer Science as a hobby"
+    - [x] Text: "Leave my mark on the world!"
 
 ### Professional Background
 - [ ] Work Experience
