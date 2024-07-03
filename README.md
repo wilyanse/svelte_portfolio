@@ -22,9 +22,9 @@
 
 ### Landing Page
 - [ ] Grabs attention
-- [ ] Outline logo of self
-- [ ] Text: "Hi there you've made it to my portfolio"
-- [ ] Button: "More about Will's portfolio"
+- [x] Outline logo of self
+- [x] Text: "Hi there you've made it to my portfolio"
+- [x] Button: "More about Will's portfolio"
     - [ ] Scrolls to 'About me' section
 
 ### About me
