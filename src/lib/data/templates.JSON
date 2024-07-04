@@ -1,0 +1,14 @@
+{
+    "_section": "Work Experience",
+    "position": "",
+    "position_link": "url",
+    "company": "",
+    "company_link": "url",
+    "start_date": "MM-YYYY",
+    "end_date": "MM-YYYY",
+    "details": {
+        "detail_1": 0,
+        "detail_2": 1
+    },
+    "stack": ["tech1", "tech2"]
+}
