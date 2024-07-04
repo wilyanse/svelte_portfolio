@@ -8,22 +8,22 @@
 </script>
 
 <main class="flex flex-col snap-mandatory snap-y overflow-y-scroll max-h-screen">
-	<div class="snap-center">
+	<div class="snap-start">
 		<LandingPage />
 	</div>
-	<div class="snap-center">
+	<div class="snap-start">
 		<AboutMe />
 	</div>
-	<div class="snap-center">
+	<div class="snap-start">
 		<ProfessionalBackground />
 	</div>
-	<div class="snap-center">
+	<div class="snap-start">
 		<Projects />
 	</div>
-	<div class="snap-center">
+	<div class="snap-start">
 		<SkillsInterests />
 	</div>
-	<div class="snap-center">
+	<div class="snap-start">
 		<Contact />
 	</div>
 </main>
