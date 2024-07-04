@@ -1,13 +1,17 @@
-<script>
+<script lang="ts">
 	import Wrapper from "./Wrapper.svelte";
     import workData from "$lib/data/work_exp.json";
+	import { popup, type PopupSettings } from "@skeletonlabs/skeleton";
 
     console.log(Object.entries(workData));
 
-    let dStr = "February 2024 ";
-    let time = Date.parse(dStr);
-    let res = new Date(time);
-    console.log(res);
+
+    const popupHover: PopupSettings = {
+        event: 'hover',
+        target: 'popupHover',
+        placement: 'top'
+    };
+					
 </script>
 <Wrapper id="Professional Background">
     <div class="max-w-full max-h-lg p-10 grid grid-rows-3 grid-cols-1">
@@ -32,9 +36,15 @@
                             <h5>
                                 {fields.details[0]}
                             </h5>
-                            <button class="variant-soft-tertiary px-5 rounded-lg">
+                            <button class="variant-soft-tertiary px-5 rounded-lg flex flex-row space-x-5 py-1 mx-auto [&>*]:pointer-events-none" use:popup={popupHover}>
                                 <svg class="h-8 w-8 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <circle cx="12" cy="12" r="1" />  <circle cx="19" cy="12" r="1" />  <circle cx="5" cy="12" r="1" /></svg>
                             </button>
+                            <div class="card p-4 variant-filled-secondary" data-popup="popupHover">
+                                {#each fields.details as detail}
+                                    <p>{detail}</p>
+                                {/each}
+                                <div class="arrow variant-filled-secondary" />
+                            </div>
                         </footer>
                     </div>
                 {/each}
