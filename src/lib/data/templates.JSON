@@ -4,8 +4,8 @@
     "position_link": "url",
     "company": "",
     "company_link": "url",
-    "start_date": "YYYY-MM",
-    "end_date": "YYYY-MM",
+    "start_date": "Month Year",
+    "end_date": "Month Year",
     "details": {
         "detail_1": 0,
         "detail_2": 1
