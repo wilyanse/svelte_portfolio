@@ -16,9 +16,9 @@
         </div>
         <div class="max-w-full">
             <h2>Work Experience</h2>
-            <div class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex gap-4 overflow-x-auto px-4 py-10">
+            <div class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex gap-4 overflow-x-auto px-4 py-5">
                 {#each Object.entries(workData) as [id, fields]}
-                    <div class="snap-start shrink-0 card py-20 w-80 text-center">
+                    <div class="snap-start shrink-0 card py-10 w-80 text-center variant variant-ghost-secondary">
                         <header class="card-header">
                             <h3>
                                 {fields.position}
@@ -29,7 +29,12 @@
                             <h4>{fields.start_date} - {fields.end_date}</h4>
                         </section>
                         <footer class="card-footer">
-                            <button></button>
+                            <h5>
+                                {fields.details[0]}
+                            </h5>
+                            <button class="variant-soft-tertiary px-5 rounded-lg">
+                                <svg class="h-8 w-8 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <circle cx="12" cy="12" r="1" />  <circle cx="19" cy="12" r="1" />  <circle cx="5" cy="12" r="1" /></svg>
+                            </button>
                         </footer>
                     </div>
                 {/each}
@@ -60,6 +65,10 @@
 
     h4 {
         @apply h4;
+    }
+
+    h5 {
+        @apply h5;
     }
 
     strong {
