@@ -10,7 +10,7 @@
         <div class="space-y-5 text-pretty text-center my-5">
             <h2>
                 My name's
-                <a href="/" class="variant-glass-secondary p-3 inline">
+                <a href="/" class="variant-glass-tertiary p-3 inline">
                     <img src={logo} alt="Face logo" />
                     <strong>Wil</strong>l Br<strong>yan</strong> Jo<strong>se</strong>
                 </a>,

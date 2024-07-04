@@ -8,7 +8,7 @@
             <h1>Hi.</h1>
             <hr class="!border-t-8 !border-double bg-white" />
             <h2 class="row-span-2">You've made it to my portfolio.</h2>
-            <a href="/">Contact Me</a>
+            <a href="/" class="btn variant-ghost-tertiary max-w-xs text-xl font-bold self-center mx-auto">Contact Me</a>
         </div>
 
         <img src={outlineImg} alt="Outline logo" />
@@ -16,7 +16,7 @@
         <div class="w-80 h-auto space-y-5 grid grid-rows-3 align-top mx-auto">
             <h1 class="text-xl">Wilyanse,</h1>
             <h2 class="">at your service.</h2>
-            <a href="/">More about Will's portfolio</a>
+            <a href="/" class="btn variant-ghost-secondary max-w-xs text-xl font-bold self-center mx-auto">More about Will's portfolio</a>
         </div>
         
     </div>
@@ -34,8 +34,5 @@
     h2 {
         @apply h2 font-semibold;
     }
-
-    a {
-        @apply btn variant-ghost-secondary max-w-xs text-xl font-bold self-center mx-auto;
-    }
+    
 </style>
