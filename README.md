@@ -42,7 +42,7 @@
 
 ### Professional Background
 - [ ] Work Experience
-    - [ ] Read from JSON file
+    - [x] Read from JSON file
     - [ ] Cards (in order of recent to least recent)
         - [ ] Header: (Job Position)
         - [ ] Body
