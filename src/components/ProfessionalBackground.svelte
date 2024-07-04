@@ -3,6 +3,11 @@
     import workData from "$lib/data/work_exp.json";
 
     console.log(Object.entries(workData));
+
+    let dStr = "February 2024 ";
+    let time = Date.parse(dStr);
+    let res = new Date(time);
+    console.log(res);
 </script>
 <Wrapper id="Professional Background">
     <div class="max-w-full max-h-full p-10 grid grid-rows-3 grid-cols-1">
@@ -15,7 +20,10 @@
                 {#each Object.entries(workData) as [id, fields]}
                     <div class="snap-start shrink-0 card py-20 w-80 text-center">
                         <header class="card-header">{fields.position}</header>
-                        <section class="p-4">(content)</section>
+                        <section class="p-4">
+                            <span>{fields.company}</span>
+                            <span>test</span>
+                        </section>
                         <footer class="card-footer">(footer)</footer>
                     </div>
                 {/each}
