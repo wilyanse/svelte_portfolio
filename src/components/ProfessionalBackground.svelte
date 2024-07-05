@@ -12,15 +12,15 @@
 					
 </script>
 <Wrapper id="Professional Background">
-    <div class="max-w-full max-h-screen p-5 grid grid-rows-7 grid-cols-1 gap-4">
+    <div class="max-w-full max-h-screen p-2.5 flex flex-col gap-4 place-items-center">
         <div class="variant-ghost-secondary p-10 self-center mx-auto">
             <h1>PROFESSIONAL BACKGROUND</h1>
         </div>
-        <div class="row-span-3 max-w-screen-xl">
+        <div class="max-w-screen-lg">
             <h2>Work Experience</h2>
-            <div class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex gap-4 overflow-x-auto px-4 py-5">
+            <div class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex gap-4 overflow-x-auto px-4 py-3">
                 {#each Object.entries(workData) as [id, fields]}
-                    <div class="snap-start shrink-0 card py-5 w-80 text-center variant variant-ghost-secondary">
+                    <div class="snap-start shrink-0 card py-5 w-80 text-center variant variant-ghost-primary">
                         <header class="card-header">
                             <h3>
                                 {fields.position}
@@ -31,15 +31,12 @@
                             <h4>{fields.start_date} - {fields.end_date}</h4>
                         </section>
                         <footer class="card-footer">
-                            <h5>
-                                {fields.details[0]}
-                            </h5>
-                            <button class="variant-soft-tertiary px-5 rounded-lg flex flex-row space-x-5 py-1 mx-auto [&>*]:pointer-events-none" use:popup={{ event: 'hover', target: 'work-' + id, placement: 'top' }}>
+                            <button class="variant-soft-tertiary px-5 rounded-lg flex flex-row space-x-5 mx-auto [&>*]:pointer-events-none" use:popup={{ event: 'hover', target: 'work-' + id, placement: 'top' }}>
                                 <svg class="h-8 w-8 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <circle cx="12" cy="12" r="1" />  <circle cx="19" cy="12" r="1" />  <circle cx="5" cy="12" r="1" /></svg>
                             </button>
                             <div class="card p-4 variant-filled-secondary" data-popup="work-{id}">
                                 {#each fields.details as detail}
-                                    <p>{detail}</p>
+                                    <p>• {detail}</p>
                                 {/each}
                                 <div class="arrow variant-filled-secondary" />
                             </div>
@@ -48,11 +45,11 @@
                 {/each}
             </div>            
         </div>
-        <div class="row-span-3">
+        <div class="max-w-screen-lg">
             <h2>Education</h2>
-            <div class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex gap-4 overflow-x-auto px-4 py-5">
+            <div class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex gap-4 overflow-x-auto px-4 py-3">
                 {#each Object.entries(educData) as [id, fields]}
-                    <div class="snap-start shrink-0 card py-5 w-80 text-center variant variant-ghost-secondary">
+                    <div class="snap-start shrink-0 card py-5 w-80 text-center variant variant-ghost-primary">
                         <header class="card-header">
                             <h3>
                                 {fields.level}
@@ -68,7 +65,7 @@
                             </button>
                             <div class="card p-4 variant-filled-secondary" data-popup="educ-{id}">
                                 {#each fields.details as detail}
-                                    <p>{detail}</p>
+                                    <p>• {detail}</p>
                                 {/each}
                                 <div class="arrow variant-filled-secondary" />
                             </div>
@@ -77,7 +74,9 @@
                 {/each}
             </div>  
         </div>
-        
+        <div>
+            <a href="/" class="btn variant-ghost-secondary text-xl font-bold self-center mx-auto">What about my personal projects?</a>
+        </div>
     </div>
 </Wrapper>
 
@@ -87,22 +86,22 @@
     }
 
     h2 {
-        @apply h2 text-2xl font-semibold;
+        @apply h2 text-xl font-semibold;
     }
 
     h3 {
-        @apply h3;
+        @apply h3 text-lg;
     }
 
     h4 {
-        @apply h4;
+        @apply h4 text-base italic;
     }
 
     h5 {
-        @apply h5;
+        @apply h5 text-sm;
     }
 
-    strong {
-        @apply font-bold;
+    p {
+        @apply h4 text-base;
     }
 </style>
