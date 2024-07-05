@@ -80,7 +80,7 @@
             </div>  
         </div>
         <div>
-            <a href="/" class="btn variant-ghost-secondary text-xl font-bold self-center mx-auto">What about my personal projects?</a>
+            <a href="#Projects" class="btn variant-ghost-secondary text-xl font-bold self-center mx-auto">What about my personal projects?</a>
         </div>
     </div>
 </Wrapper>

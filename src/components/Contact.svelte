@@ -63,6 +63,6 @@
     }
 
     a {
-        @apply logo-item px-5 variant-ghost-tertiary;
+        @apply logo-item px-5 variant-ghost-tertiary card-hover;
     }
 </style>
