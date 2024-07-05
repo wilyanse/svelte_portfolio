@@ -12,7 +12,7 @@
 </script>
 <Wrapper id="Professional Background">
     <div class="max-w-full max-h-screen p-2.5 flex flex-col gap-4 place-items-center">
-        <div class="variant-ghost-secondary p-10 self-center mx-auto">
+        <div class="variant-ghost-secondary p-10 self-center mx-auto card-hover">
             <h1>PROFESSIONAL BACKGROUND</h1>
         </div>
         <div class="max-w-screen-lg">
@@ -30,7 +30,7 @@
                             <h4>{fields.start_date} - {fields.end_date}</h4>
                         </section>
                         <footer class="card-footer">
-                            <button class="variant-soft-tertiary px-5 rounded-lg flex flex-row space-x-5 mx-auto [&>*]:pointer-events-none" use:popup={{ event: 'hover', target: 'work-' + id, placement: 'top' }}>
+                            <button class="card-hover variant-soft-tertiary px-5 rounded-lg flex flex-row space-x-5 mx-auto [&>*]:pointer-events-none" use:popup={{ event: 'hover', target: 'work-' + id, placement: 'top' }}>
                                 <svg class="h-8 w-8 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <circle cx="12" cy="12" r="1" />  <circle cx="19" cy="12" r="1" />  <circle cx="5" cy="12" r="1" /></svg>
                             </button>
                             <div class="card p-10 variant-filled-primary space-y-5" data-popup="work-{id}">
@@ -65,7 +65,7 @@
                             <h4>{fields.start_date} - {fields.end_date}</h4>
                         </section>
                         <footer class="card-footer">
-                            <button class="variant-soft-tertiary px-5 rounded-lg flex flex-row space-x-5 py-1 mx-auto [&>*]:pointer-events-none" use:popup={{ event: 'hover', target: 'educ-' + id, placement: 'top' }}>
+                            <button class="card-hover variant-soft-tertiary px-5 rounded-lg flex flex-row space-x-5 py-1 mx-auto [&>*]:pointer-events-none" use:popup={{ event: 'hover', target: 'educ-' + id, placement: 'top' }}>
                                 <svg class="h-8 w-8 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <circle cx="12" cy="12" r="1" />  <circle cx="19" cy="12" r="1" />  <circle cx="5" cy="12" r="1" /></svg>
                             </button>
                             <div class="card p-10 variant-filled-primary space-y-5" data-popup="educ-{id}">

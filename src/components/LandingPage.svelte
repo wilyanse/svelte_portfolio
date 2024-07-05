@@ -25,7 +25,7 @@
 
 <style lang="postcss">
     img {
-        @apply aspect-square size-1/2 min-w-full h-auto;
+        @apply aspect-square size-1/2 min-w-full h-auto card-hover;
     }
 
     h1 {
