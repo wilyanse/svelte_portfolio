@@ -1,70 +1,106 @@
 {
     "0": {
-        "name": "name0",
-        "desc": "desc0",
-        "link": "link0",
-        "details": [
-            "detail_0_0",
-            "detail_0_1"
+        "name": "Bagyo Ka Lang, Pinoy Kami",
+        "desc": "A Data Science / Web Development project that involves looking into Internal Displacements due to Natural disasters between the Philippines and other SEA countries, with a complete step by step process from Data Gathering to Data Analysis.",
+        "link": "https://arukuen.github.io/cs-132-natural-disaster-risk-reduction/",
+        "keywords": [
+            "Data Science",
+            "Data Engineering",
+            "Web Development"
         ],
         "stack": [
-            "tech0",
-            "tech1"
-        ],
-        "keywords": [
-            "keyword_0_0",
-            "keyword_0_1"
+            "SQL",
+            "Python",
+            "Pandas",
+            "MatPlotLib"
         ]
     },
     "1": {
-        "name": "name1",
-        "desc": "desc1",
-        "link": "link1",
-        "details": [
-            "detail_1_0",
-            "detail_1_1"
-        ],
+        "name": "ReciKeep",
+        "desc": "Fullstack Decentralized Web App that uses the Arbitrum Sepolia testnet that was developed in Solidity with a web app that uses SvelteKit. Note that you may need a MetaMask wallet in order to view the contents of the DAPP on https://blk-recikeep.vercel.app/.",
+        "link": "https://drive.google.com/file/d/1mJzJm2bg-TjrGveaiePCmcTU959jb0me/view?usp=sharing",
         "stack": [
-            "tech1_0",
-            "tech1_1"
+            "Solidity",
+            "SvelteKit",
+            "SkeletonUI"
         ],
         "keywords": [
-            "keyword_1_0",
-            "keyword_1_1"
-        ]
-    },
-    "3": {
-        "name": "name1",
-        "desc": "desc1",
-        "link": "link1",
-        "details": [
-            "detail_1_0",
-            "detail_1_1"
-        ],
-        "stack": [
-            "tech1_0",
-            "tech1_1"
-        ],
-        "keywords": [
-            "keyword_1_0",
-            "keyword_1_1"
+            "Blockchain",
+            "Web Development"
         ]
     },
     "2": {
-        "name": "name1",
-        "desc": "desc1",
-        "link": "link1",
-        "details": [
-            "detail_1_0",
-            "detail_1_1"
-        ],
+        "name": "Toxic Speech Classifier",
+        "desc": "A machine learning model that takes in texts similar to Tweets, and determines whether the Tweet is toxic or not using the Multinomial Naive Bayes classifier, which proved to be more accurate than the t-SNE K-means clustering algorithm",
+        "link": "https://github.com/Qubits-01/toxic-speech-classifier",
         "stack": [
-            "tech1_0",
-            "tech1_1"
+            "Python",
+            "React",
+            "Pandas",
+            "SciKit Learn",
+            "MatPlotLib"
         ],
         "keywords": [
-            "keyword_1_0",
-            "keyword_1_1"
+            "Data Science",
+            "Data Engineering",
+            "Machine Learning",
+            "Artificial Intelligence",
+            "Naive Bayes"
         ]
+    },
+    "3": {
+        "name": "IwasSingko",
+        "desc": "A 2-dimensional Godot Game that follows the genre of Bullet Hell games, with the main character serving as a student that aims to have a high score or final grade",
+        "link": "https://github.com/TheRedSwaRM/IwasSingko",
+        "stack": [
+            "Godot",
+            "GDScript"
+        ],
+        "keywords": [
+            "Game Development",
+            "Software Engineering"
+        ]
+    },
+    "4": {
+        "name": "ReciPeek",
+        "desc": "IOT system that takes in the weight of an ingredient on the sensor as input, stores it to the pantry, and showcases the list of available recipes to cook. The system uses an ESP32 controller and has Firebase store data based on API requests.",
+        "link": "https://recipeek.vercel.app/",
+        "stack": [
+            "SvelteKit",
+            "SkeletonUI",
+            "Firebase",
+            "Arduino",
+            "ESP32"
+        ],
+        "keywords": [
+            "IOT",
+            "Web Development",
+            "Embedded System"
+        ]
+    },
+    "5": {
+        "name": "Downloads Sorter",
+        "desc": "Python script that moved my files from an internal downloads folder into an external directory with error logging. Used every now and then to keep my SSD clean.",
+        "link": "https://github.com/wilyanse/downloads-sorter",
+        "stack": [
+            "Python"
+        ],
+        "keywords": [
+            "Scripting",
+            "Automation"
+        ]
+    },
+    "6": {
+        "name": "Portfolio Website",
+        "desc": "This very website! Fully developed and designed by me with the help of SvelteKit, SkeletonUI, and JSON files as the (temporary) data management system.",
+        "link": "https://github.com/wilyanse/svelte_portfolio",
+        "stack": [
+            "SvelteKit",
+            "SkeletonUI"
+        ],
+        "keywords": [
+            "Web Development"
+        ]
+
     }
 }
