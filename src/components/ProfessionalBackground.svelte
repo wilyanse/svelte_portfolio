@@ -9,7 +9,6 @@
         target: 'popupHover',
         placement: 'top'
     };
-					
 </script>
 <Wrapper id="Professional Background">
     <div class="max-w-full max-h-screen p-2.5 flex flex-col gap-4 place-items-center">
@@ -38,6 +37,12 @@
                                 {#each fields.details as detail}
                                     <p>• {detail}</p>
                                 {/each}
+                                <p>
+                                    <strong>Tech stack: </strong>
+                                    {#each fields.stack as tech}
+                                        {tech}•
+                                    {/each}
+                                </p>
                                 <div class="arrow variant-filled-primary" />
                             </div>
                         </footer>
@@ -90,15 +95,11 @@
     }
 
     h3 {
-        @apply h3 text-lg;
+        @apply h3 text-lg font-semibold;
     }
 
     h4 {
         @apply h4 text-base italic;
-    }
-
-    h5 {
-        @apply h5 text-sm;
     }
 
     p {

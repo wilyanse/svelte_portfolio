@@ -44,27 +44,27 @@
 - [ ] Work Experience
     - [x] Read from JSON file
     - [ ] Cards (in order of recent to least recent)
-        - [ ] Header: (Job Position)
-        - [ ] Body
-            - [ ] (Company name)
-            - [ ] (Start Date) - (End Date)
-        - [ ] Footer: Button: "Want to know more?"
-    - [ ] Work Modal
+        - [x] Header: (Job Position)
+        - [x] Body
+            - [x] (Company name)
+            - [x] (Start Date) - (End Date)
+        - [x] Footer: Button: "Want to know more?"
+    - [x] Work Modal
         - [ ] Header: (Job Position) at (Company name) {Link to "What does a (Job Position) do?" and "What does (Company name) do?"}
-        - [ ] Body
-            - [ ] (Start Date) - (End Date)
+        - [x] Body
+            - [x] (Start Date) - (End Date)
             - [ ] (Details, starting from high importance level to low)
-            - [ ] Text: "Tech stack:" (list of strings from Tech stack)
+            - [x] Text: "Tech stack:" (list of strings from Tech stack)
             - [ ] Button (takes up whole left side): Next work experience (not applicable if at newest work)
             - [ ] Button (takes up whole right side): Previous work experience (not applicable if at oldest work)
         - [ ] Footer: Button: Close icon
 - [ ] Education
-    - [ ] Read from JSON file refer to l
-    - [ ] Cards (in order of recent to least recent) (same format as work exp)
-        - [ ] Header: (Graduation Level)
-        - [ ] Body
-            - [ ] (School name)
-            - [ ] (Start Date) - (End Date)
+    - [x] Read from JSON file refer to 
+    - [x] Cards (in order of recent to least recent) (same format as work exp)
+        - [x] Header: (Graduation Level)
+        - [x] Body
+            - [x] (School name)
+            - [x] (Start Date) - (End Date)
 
 ### Projects
 - [ ] Cards, import by JSON file, searchable by keyword where keywords are Fields of Comp sci & tech stack

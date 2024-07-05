@@ -1,114 +1,74 @@
 {
-    "0": {
-        "position": "position0",
-        "position_link": "url",
-        "company": "company0",
-        "company_link": "url",
-        "start_date": "YYYY-MM",
-        "end_date": "YYYY-MM",
+    "-1": {
+        "position": "Fullstack Developer",
+        "company": "UP Intelligent Transportation Systems Laboratory",
+        "start_date": "July 2024",
+        "end_date": "August 2024",
         "details": [
-            "detail_0_work_1",
-            "detail_0_work_2"
+            "Design and develop interactive mockups using Figma, enhancing existing wireframes and improving user experience for 3+ major projects",
+            "Creat and manage a PostgreSQL database model on the cloud to store inputs for a ship routing system, accessed and manipulated via custom Python scripts",
+            "Lead QA efforts for a team of 5, ensuring high-quality outputs and reducing errors by 20% through rigorous testing protocols"
         ],
         "stack": [
-            "tech1",
-            "tech2"
+            "Figma",
+            "PostgreSQL",
+            "SQL",
+            "Python",
+            "Vitest",
+            "Playwright",
+            "AWS",
+            "Trello"
+        ]
+    },
+    "0": {
+        "position": "Data Engineering Intern",
+        "company": "Anino Inc.",
+        "start_date": "August 2023",
+        "end_date": "September 2023",
+        "details": [
+            "Manage and execute queries on the Firebase database using BigQuery, processing over 100,000 data entries daily",
+            "Collaborate with cross-functional teams to enhance data pipeline efficiency, resulting in a 20% reduction in query processing time",
+            "Contribute to data quality assurance by implementing validation checks, leading to a 15% decrease in data error instances"
+        ],
+        "stack": [
+            "Vue.js",
+            "Flask",
+            "SQL",
+            "BigQuery",
+            "Firebase",
+            "Firestore",
+            "Unity",
+            "Circle CI"
         ]
     },
     "1": {
-        "position": "position1",
-        "position_link": "url",
-        "company": "company1",
-        "company_link": "url",
-        "start_date": "YYYY-MM",
-        "end_date": "YYYY-MM",
+        "position": "Web Developer Intern",
+        "company": "AHEAD Learning Systems",
+        "start_date": "July 2023",
+        "end_date": "August 2023",
         "details": [
-            "detail_1_work_1",
-            "detail_1_work_2"
+            "Designed an adaptive testing algorithm that uses machine learning to gauge the test taker’s ability and adjust the test accordingly, boosting engagement by 20% and enhancing completion rates by 15%",
+            "Served as full stack Django developer, optimizing website speed by 25%",
+            "Transitioned to project manager to lead a team of 3 developers with full documentation on previous and future work, achieving 15% better project delivery efficiency and 10% higher team satisfaction"
         ],
         "stack": [
-            "tech1",
-            "tech2"
+            "Django",
+            "Python",
+            "Pandas",
+            "Scikit Learn"
         ]
     },
     "2": {
-        "position": "position1",
-        "position_link": "url",
-        "company": "company1",
-        "company_link": "url",
-        "start_date": "YYYY-MM",
-        "end_date": "YYYY-MM",
+        "position": "Game Developer Intern",
+        "company": "Ingenuity Software",
+        "start_date": "Jun 2018",
+        "end_date": "July 2018",
         "details": [
-            "detail_1_work_1",
-            "detail_1_work_2"
+            "Constructed game logic, levels, mechanics, GUI, animations, and special effects with Unity, resulting in 2 complete, playable games with optimized performance and minimal bugs",
+            "Developed 2 game prototypes using Unity, optimized game performance, and achieved a 99% bug-free rate"
         ],
         "stack": [
-            "tech1",
-            "tech2"
-        ]
-    },
-    "3": {
-        "position": "position1",
-        "position_link": "url",
-        "company": "company1",
-        "company_link": "url",
-        "start_date": "YYYY-MM",
-        "end_date": "YYYY-MM",
-        "details": [
-            "detail_1_work_1",
-            "detail_1_work_2"
-        ],
-        "stack": [
-            "tech1",
-            "tech2"
-        ]
-    },
-    "4": {
-        "position": "position1",
-        "position_link": "url",
-        "company": "company1",
-        "company_link": "url",
-        "start_date": "YYYY-MM",
-        "end_date": "YYYY-MM",
-        "details": [
-            "detail_1_work_1",
-            "detail_1_work_2"
-        ],
-        "stack": [
-            "tech1",
-            "tech2"
-        ]
-    },
-    "5": {
-        "position": "position1",
-        "position_link": "url",
-        "company": "company1",
-        "company_link": "url",
-        "start_date": "YYYY-MM",
-        "end_date": "YYYY-MM",
-        "details": [
-            "detail_1_work_1",
-            "detail_1_work_2"
-        ],
-        "stack": [
-            "tech1",
-            "tech2"
-        ]
-    },
-    "6": {
-        "position": "position1",
-        "position_link": "url",
-        "company": "company1",
-        "company_link": "url",
-        "start_date": "YYYY-MM",
-        "end_date": "YYYY-MM",
-        "details": [
-            "detail_1_work_1",
-            "detail_1_work_2"
-        ],
-        "stack": [
-            "tech1",
-            "tech2"
+            "Unity"
         ]
     }
 }
