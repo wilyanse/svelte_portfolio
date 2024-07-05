@@ -4,13 +4,13 @@
 </script>
 <Wrapper id="About Me">
     <div class="grid grid-rows-5 gap-3 place-items-center p-20 space-y-5 min-h-full">
-        <div class="variant-ghost-secondary p-10 self-center">
+        <div class="variant-ghost-secondary p-10 self-center card-hover">
             <h1>ABOUT ME</h1>
         </div>
         <div class="space-y-5 text-pretty text-center my-5">
             <h2>
                 My name's
-                <a href="#Contact" class="variant-glass-tertiary p-3 inline">
+                <a href="#Contact" class="variant-glass-tertiary p-3 inline card-hover">
                     <img src={logo} alt="Face logo" />
                     <strong>Wil</strong>l Br<strong>yan</strong> Jo<strong>se</strong>
                 </a>,
@@ -21,7 +21,7 @@
             </h3>
         </div>
         <div class="row-span-2 row-start-3 grid grid-cols-2 gap-40">
-            <div class="variant-ghost-primary w-full">
+            <div class="variant-ghost-primary w-full card-hover">
                 <h2 class="font-semibold p-5">What have I <strong>done?</strong></h2>
                 <div class="p-5 space-y-5">
                     <div class="flex flex-row space-x-5">
@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </div>
-            <div class="variant-ghost-primary w-full">
+            <div class="variant-ghost-primary w-full card-hover">
                 <h2 class="font-semibold p-5">What do I <strong>aim to do?</strong></h2>
                 <div class="p-5 space-y-5">
                     <div class="flex flex-row space-x-5">

@@ -61,7 +61,7 @@
 </script>
 <Wrapper id="Projects">
     <div class="max-h-screen max-w-screen-lg p-2.5 flex flex-col gap-4 place-items-center space-y-3">
-        <div class="variant-ghost-secondary p-10 self-center mx-auto">
+        <div class="variant-ghost-secondary p-10 self-center mx-auto card-hover">
             <h1>PROJECTS</h1>
         </div>
         <div class="w-full">

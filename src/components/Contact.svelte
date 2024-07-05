@@ -9,7 +9,7 @@
     <div class="flex flex-col gap-20">
         <h2>That's pretty much it about me.</h2>
         <h2>Let's connect!</h2>
-        <div class="variant-ghost-secondary p-10 self-center mx-auto">
+        <div class="variant-ghost-secondary p-10 self-center mx-auto card-hover">
             <h1>CONTACT ME</h1>
         </div>
         <div class="logo-cloud grid-cols-1 lg:!grid-cols-3 gap-1">
