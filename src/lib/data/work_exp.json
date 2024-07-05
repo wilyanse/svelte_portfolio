@@ -1,0 +1,114 @@
+{
+    "0": {
+        "position": "position0",
+        "position_link": "url",
+        "company": "company0",
+        "company_link": "url",
+        "start_date": "YYYY-MM",
+        "end_date": "YYYY-MM",
+        "details": [
+            "detail_0_work_1",
+            "detail_0_work_2"
+        ],
+        "stack": [
+            "tech1",
+            "tech2"
+        ]
+    },
+    "1": {
+        "position": "position1",
+        "position_link": "url",
+        "company": "company1",
+        "company_link": "url",
+        "start_date": "YYYY-MM",
+        "end_date": "YYYY-MM",
+        "details": [
+            "detail_1_work_1",
+            "detail_1_work_2"
+        ],
+        "stack": [
+            "tech1",
+            "tech2"
+        ]
+    },
+    "2": {
+        "position": "position1",
+        "position_link": "url",
+        "company": "company1",
+        "company_link": "url",
+        "start_date": "YYYY-MM",
+        "end_date": "YYYY-MM",
+        "details": [
+            "detail_1_work_1",
+            "detail_1_work_2"
+        ],
+        "stack": [
+            "tech1",
+            "tech2"
+        ]
+    },
+    "3": {
+        "position": "position1",
+        "position_link": "url",
+        "company": "company1",
+        "company_link": "url",
+        "start_date": "YYYY-MM",
+        "end_date": "YYYY-MM",
+        "details": [
+            "detail_1_work_1",
+            "detail_1_work_2"
+        ],
+        "stack": [
+            "tech1",
+            "tech2"
+        ]
+    },
+    "4": {
+        "position": "position1",
+        "position_link": "url",
+        "company": "company1",
+        "company_link": "url",
+        "start_date": "YYYY-MM",
+        "end_date": "YYYY-MM",
+        "details": [
+            "detail_1_work_1",
+            "detail_1_work_2"
+        ],
+        "stack": [
+            "tech1",
+            "tech2"
+        ]
+    },
+    "5": {
+        "position": "position1",
+        "position_link": "url",
+        "company": "company1",
+        "company_link": "url",
+        "start_date": "YYYY-MM",
+        "end_date": "YYYY-MM",
+        "details": [
+            "detail_1_work_1",
+            "detail_1_work_2"
+        ],
+        "stack": [
+            "tech1",
+            "tech2"
+        ]
+    },
+    "6": {
+        "position": "position1",
+        "position_link": "url",
+        "company": "company1",
+        "company_link": "url",
+        "start_date": "YYYY-MM",
+        "end_date": "YYYY-MM",
+        "details": [
+            "detail_1_work_1",
+            "detail_1_work_2"
+        ],
+        "stack": [
+            "tech1",
+            "tech2"
+        ]
+    }
+}

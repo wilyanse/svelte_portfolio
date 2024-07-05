@@ -59,7 +59,7 @@
             - [ ] Button (takes up whole right side): Previous work experience (not applicable if at oldest work)
         - [ ] Footer: Button: Close icon
 - [ ] Education
-    - [ ] Read from JSON file
+    - [ ] Read from JSON file refer to l
     - [ ] Cards (in order of recent to least recent) (same format as work exp)
         - [ ] Header: (Graduation Level)
         - [ ] Body

@@ -1,0 +1,22 @@
+{
+    "0": {
+        "level": "level_0",
+        "school": "school_0",
+        "start_date": "Month Year start 0",
+        "end_date": "Month Year end 0",
+        "details": [
+            "detail_0_educ_1",
+            "detail_0_educ_2"
+        ]
+    },
+    "1": {
+        "level": "level_1",
+        "school": "school_1",
+        "start_date": "Month Year start 1",
+        "end_date": "Month Year end 1",
+        "details": [
+            "detail_1_educ_1",
+            "detail_1_educ_2"
+        ]
+    }
+}
