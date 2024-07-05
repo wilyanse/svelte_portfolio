@@ -113,7 +113,7 @@
             {/if}           
         </div>
         <div>
-            <a href="/" class="btn variant-ghost-secondary text-xl font-bold self-center mx-auto">What about my personal projects?</a>
+            <a href="#Contact" class="btn variant-ghost-secondary text-xl font-bold self-center mx-auto">How can I contact you?</a>
         </div>
     </div>
 </Wrapper>

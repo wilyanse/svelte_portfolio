@@ -10,7 +10,7 @@
         <div class="space-y-5 text-pretty text-center my-5">
             <h2>
                 My name's
-                <a href="/" class="variant-glass-tertiary p-3 inline">
+                <a href="#Contact" class="variant-glass-tertiary p-3 inline">
                     <img src={logo} alt="Face logo" />
                     <strong>Wil</strong>l Br<strong>yan</strong> Jo<strong>se</strong>
                 </a>,
@@ -57,7 +57,7 @@
             </div>
         </div>
         <div>
-            <a href="/" class="btn variant-ghost-secondary text-xl font-bold self-center mx-auto">Interested in my professional background?</a>
+            <a href="#Professional Background" class="btn variant-ghost-secondary text-xl font-bold self-center mx-auto">Interested in my professional background?</a>
         </div>
     </div>
 </Wrapper>

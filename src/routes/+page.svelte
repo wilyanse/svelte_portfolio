@@ -21,9 +21,6 @@
 		<Projects />
 	</div>
 	<div class="snap-start">
-		<SkillsInterests />
-	</div>
-	<div class="snap-start">
 		<Contact />
 	</div>
 </main>
