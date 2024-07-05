@@ -29,10 +29,6 @@
         "name": "name0",
         "desc": "desc0",
         "link": "link0",
-        "details": [
-            "detail_0_0",
-            "detail_0_1"
-        ],
         "stack": [
             "tech0",
             "tech1"

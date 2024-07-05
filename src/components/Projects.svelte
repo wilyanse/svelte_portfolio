@@ -75,32 +75,41 @@
                 />
             </div>
         </div>
-        <div class="max-w-screen-lg w-screen">
+        <div class="max-w-screen-lg">
             {#if inputChipList.length > 0}
-            <div class="flex snap-x scroll-px-4 snap-mandatory scroll-smooth gap-4 overflow-x-auto px-4 py-2 place-content-center">
+            <div class="flex snap-x scroll-px-4 snap-mandatory scroll-smooth gap-4 overflow-x-auto px-4 py-2">
                 {#each Object.entries(projectsData) as [id, fields]}
                     {#if hasCommonElement(inputChipList, fields.keywords) ||  hasCommonElement(inputChipList, fields.stack)}
-                        <div class="snap-start shrink-0 card py-5 w-80 h-80 text-center variant variant-ghost-primary grid grid-rows-5">
-                            <header class="card-header m-auto">
-                                <h3>
+                        <a href="{fields.link}" target="_blank" class="snap-start shrink-0 card py-3 w-80 h-80 text-center variant variant-ghost-primary grid grid-rows-5 card-hover">
+                            <header class="card-header m-auto row-span-2">
+                                <h4>
                                     {fields.name}
-                                </h3>
+                                </h4>
                                 
                             </header>
-                            <section class="p-4 space-y-1.5 mx-auto">
-                                <a href={fields.link}>Github Link</a>
-                            </section>
                             <footer class="card-footer mx-auto row-span-3">
                                 <h5>{fields.desc}</h5>
                             </footer>
-                        </div>
+                        </a>
                     {/if}
                 {/each}
             </div>
             {:else}
-                <div class="w-full h-80 place-content-center">
-                    <h1>Try clicking on the keywords to get a list of projects</h1>
-                </div>
+            <div class="flex snap-x scroll-px-4 snap-mandatory scroll-smooth gap-4 overflow-x-auto px-4 py-2">
+                {#each Object.entries(projectsData) as [id, fields]}
+                    <a href="{fields.link}" target="_blank" class="snap-start shrink-0 card py-3 w-80 h-80 text-center variant variant-ghost-primary grid grid-rows-5 card-hover mx-auto">
+                        <header class="card-header m-auto row-span-2">
+                            <h4>
+                                {fields.name}
+                            </h4>
+                            
+                        </header>
+                        <footer class="card-footer mx-auto row-span-3">
+                            <h5>{fields.desc}</h5>
+                        </footer>
+                    </a>
+                {/each}
+            </div>
             {/if}           
         </div>
         <div>
@@ -114,12 +123,12 @@
         @apply font-bold text-5xl h1 text-center;
     }
 
-    h2 {
-        @apply h2 text-xl font-semibold;
+    h5 {
+        @apply h6 text-justify;
     }
 
-    h3 {
-        @apply h3 text-lg font-semibold;
+    h4 {
+        @apply font-bold;
     }
 
 </style>
