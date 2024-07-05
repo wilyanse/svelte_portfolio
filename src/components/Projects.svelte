@@ -10,10 +10,28 @@
 
     import { InputChip } from '@skeletonlabs/skeleton';
 
-    type FlavorOption = AutocompleteOption<string, { healthy: boolean }>;
-    const flavorOptions: AutocompleteOption<string>[] = [
-        { label: 'keyword_0_0', value: 'keyword_0_0', keywords: 'plain, basic' },
-    ];
+    function generateAutocompleteOptions(projectsData: ProjectsData): AutocompleteOption<string>[] {
+        const combinedOptions: Set<string> = new Set();
+
+        for (const [id, fields] of Object.entries(projectsData)) {
+            const stack = fields.stack;
+            const keywords = fields.keywords;
+
+            // Combine stack and keywords into the set to avoid duplicates
+            stack.forEach((item: string) => combinedOptions.add(item));
+            keywords.forEach((item: string) => combinedOptions.add(item));
+        }
+
+        // Convert the set to an array of AutocompleteOption
+        const autocompleteOptions: AutocompleteOption<string>[] = Array.from(combinedOptions).map(item => ({
+            label: item,
+            value: item,
+        }));
+
+        return autocompleteOptions;
+    }
+
+    const flavorOptions = generateAutocompleteOptions(projectsData);
 
 	function onInputChipSelect(event: CustomEvent<FlavorOption>): void {
 		console.log('onInputChipSelect', event.detail);
@@ -61,7 +79,7 @@
             {#if inputChipList.length > 0}
             <div class="flex snap-x scroll-px-4 snap-mandatory scroll-smooth gap-4 overflow-x-auto px-4 py-2 place-content-center">
                 {#each Object.entries(projectsData) as [id, fields]}
-                    {#if hasCommonElement(inputChipList, fields.keywords)}
+                    {#if hasCommonElement(inputChipList, fields.keywords) ||  hasCommonElement(inputChipList, fields.stack)}
                         <div class="snap-start shrink-0 card py-5 w-80 h-80 text-center variant variant-ghost-primary grid grid-rows-5">
                             <header class="card-header m-auto">
                                 <h3>
