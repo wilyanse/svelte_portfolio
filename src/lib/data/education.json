@@ -1,22 +1,37 @@
 {
     "0": {
-        "level": "level_0",
-        "school": "school_0",
-        "start_date": "Month Year start 0",
-        "end_date": "Month Year end 0",
+        "level": "Graduate Level",
+        "school": "University of the Philippines - Diliman",
+        "start_date": "August 2020",
+        "end_date": "August 2024",
         "details": [
-            "detail_0_educ_1",
-            "detail_0_educ_2"
+            "BS Computer Science",
+            "Graduated Cum Laude",
+            "Researcher in the System Modeling and Simulations Laboratory",
+            "Department of Science and Technology (DOST) Merit Scholar",
+            "Published study entitled 'From the COVID-19 Pandemic to the Mental Health of the Philippines: Modelling the Cascade of Disasters using an Influence Diagram'",
+            "Courses covered: Data Structures and Algorithms, Software Development, Database Systems, Discrete Math, Artificial Intelligence, Data Science, Blockchain Development"
         ]
     },
     "1": {
-        "level": "level_1",
-        "school": "school_1",
-        "start_date": "Month Year start 1",
-        "end_date": "Month Year end 1",
+        "level": "Secondary Level",
+        "school": "Philippine Science High School - Southern Mindanao Campus",
+        "start_date": "August 2014",
+        "end_date": "August 2020",
         "details": [
-            "detail_1_educ_1",
-            "detail_1_educ_2"
+            "Graduated with Honors",
+            "Study entitled 'Search My Community: A Mobile Application System for Reporting and Retrieving Lost Items'",
+            "Courses covered: Data Structures and Algorithms, Web Development, Game Development, Android Development, UI/UX Design"
+        ]
+    },
+    "2": {
+        "level": "Primary Level",
+        "school": "Holy Cross of Davao College Inc., Basic Education",
+        "start_date": "June 2006",
+        "end_date": "May 2014",
+        "details": [
+            "Graduated as Valedictorian",
+            "Finished 2nd place at the Division School's Press Conference for Feature Writing"
         ]
     }
 }

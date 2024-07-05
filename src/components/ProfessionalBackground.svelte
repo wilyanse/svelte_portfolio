@@ -26,7 +26,7 @@
                                 {fields.position}
                             </h3>
                         </header>
-                        <section class="p-4">
+                        <section class="p-4 space-y-1.5">
                             <h4>{fields.company}</h4>
                             <h4>{fields.start_date} - {fields.end_date}</h4>
                         </section>
@@ -34,11 +34,11 @@
                             <button class="variant-soft-tertiary px-5 rounded-lg flex flex-row space-x-5 mx-auto [&>*]:pointer-events-none" use:popup={{ event: 'hover', target: 'work-' + id, placement: 'top' }}>
                                 <svg class="h-8 w-8 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <circle cx="12" cy="12" r="1" />  <circle cx="19" cy="12" r="1" />  <circle cx="5" cy="12" r="1" /></svg>
                             </button>
-                            <div class="card p-4 variant-filled-secondary" data-popup="work-{id}">
+                            <div class="card p-10 variant-filled-primary space-y-5" data-popup="work-{id}">
                                 {#each fields.details as detail}
                                     <p>• {detail}</p>
                                 {/each}
-                                <div class="arrow variant-filled-secondary" />
+                                <div class="arrow variant-filled-primary" />
                             </div>
                         </footer>
                     </div>
@@ -55,7 +55,7 @@
                                 {fields.level}
                             </h3>
                         </header>
-                        <section class="p-4">
+                        <section class="p-4 space-y-1.5">
                             <h4>{fields.school}</h4>
                             <h4>{fields.start_date} - {fields.end_date}</h4>
                         </section>
@@ -63,11 +63,11 @@
                             <button class="variant-soft-tertiary px-5 rounded-lg flex flex-row space-x-5 py-1 mx-auto [&>*]:pointer-events-none" use:popup={{ event: 'hover', target: 'educ-' + id, placement: 'top' }}>
                                 <svg class="h-8 w-8 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <circle cx="12" cy="12" r="1" />  <circle cx="19" cy="12" r="1" />  <circle cx="5" cy="12" r="1" /></svg>
                             </button>
-                            <div class="card p-4 variant-filled-secondary" data-popup="educ-{id}">
+                            <div class="card p-10 variant-filled-primary space-y-5" data-popup="educ-{id}">
                                 {#each fields.details as detail}
                                     <p>• {detail}</p>
                                 {/each}
-                                <div class="arrow variant-filled-secondary" />
+                                <div class="arrow variant-filled-primary" />
                             </div>
                         </footer>
                     </div>
@@ -102,6 +102,6 @@
     }
 
     p {
-        @apply h4 text-base;
+        @apply h4 text-base text-left;
     }
 </style>
