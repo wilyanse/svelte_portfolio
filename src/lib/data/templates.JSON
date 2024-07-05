@@ -37,5 +37,8 @@
             "keyword0",
             "keyword1"
         ]
+    },
+    "Skills": {
+        "skill": "imageUrl"
     }
 }
