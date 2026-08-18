@@ -16,11 +16,14 @@
 	import SkillsInterests from '../components/SkillsInterests.svelte';
 	import Contact from '../components/Contact.svelte';
 	import Toast from '../components/Toast.svelte';
+	import projectsData from '$lib/data/projects.json';
+
+	const projectCount = Object.keys(projectsData).length;
 
 	const sections: { key: Section; n: string; title: string; teaser: string }[] = [
 		{ key: 'about', n: '01', title: 'About Me', teaser: 'Who I am & where I’m headed' },
 		{ key: 'background', n: '02', title: 'Background', teaser: 'Work experience & education' },
-		{ key: 'projects', n: '03', title: 'Projects', teaser: '9 things I’ve built' },
+		{ key: 'projects', n: '03', title: 'Projects', teaser: `${projectCount} things I’ve built` },
 		{ key: 'skills', n: '04', title: 'Skills & Interests', teaser: 'What I’m good at & into' },
 		{ key: 'contact', n: '05', title: 'Contact', teaser: 'Let’s connect' }
 	];
