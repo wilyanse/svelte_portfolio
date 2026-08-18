@@ -2,6 +2,7 @@
 	import { scale } from 'svelte/transition';
 	import Modal from './Modal.svelte';
 	import CloseButton from './CloseButton.svelte';
+	import Icon from './Icon.svelte';
 	import { closeModal, copyToClipboard } from '$lib/portfolio';
 
 	type Contact = {
@@ -14,12 +15,12 @@
 	};
 
 	const contacts: Contact[] = [
-		{ icon: 'in', label: 'LinkedIn', value: '/in/wilyanse', hint: 'open', type: 'link', target: 'https://www.linkedin.com/in/wilyanse/' },
-		{ icon: '@', label: 'Email', value: 'willjose51@gmail.com', hint: 'copy', type: 'copy', target: 'willjose51@gmail.com' },
-		{ icon: '#', label: 'Phone', value: '+63 939 198 6763', hint: 'copy', type: 'copy', target: '+639391986763' },
-		{ icon: 'S', label: 'Skype', value: 'join.skype.com', hint: 'open', type: 'link', target: 'https://join.skype.com/invite/tHKbT7LoOati' },
-		{ icon: 'X', label: 'Twitter / X', value: '@Wilyanse', hint: 'open', type: 'link', target: 'https://x.com/Wilyanse' },
-		{ icon: 'D', label: 'Discord', value: 'wilyanse', hint: 'copy', type: 'copy', target: 'wilyanse' }
+		{ icon: 'linkedin', label: 'LinkedIn', value: '/in/wilyanse', hint: 'open', type: 'link', target: 'https://www.linkedin.com/in/wilyanse/' },
+		{ icon: 'mail', label: 'Email', value: 'willjose51@gmail.com', hint: 'copy', type: 'copy', target: 'willjose51@gmail.com' },
+		{ icon: 'phone', label: 'Phone', value: '+63 939 198 6763', hint: 'copy', type: 'copy', target: '+639391986763' },
+		{ icon: 'skype', label: 'Skype', value: 'join.skype.com', hint: 'open', type: 'link', target: 'https://join.skype.com/invite/tHKbT7LoOati' },
+		{ icon: 'twitter-x', label: 'Twitter / X', value: '@Wilyanse', hint: 'open', type: 'link', target: 'https://x.com/Wilyanse' },
+		{ icon: 'discord', label: 'Discord', value: 'wilyanse', hint: 'copy', type: 'copy', target: 'wilyanse' }
 	];
 
 	function activate(c: Contact) {
@@ -44,12 +45,14 @@
 	<div class="grid">
 		{#each contacts as c, i}
 			<button class="contact" on:click={() => activate(c)} in:scale={{ duration: 240, start: 0.92, delay: i * 45 }}>
-				<span class="icon">{c.icon}</span>
+				<span class="icon"><Icon name={c.icon} size={20} /></span>
 				<span class="text">
 					<span class="c-label">{c.label}</span>
 					<span class="c-value">{c.value}</span>
 				</span>
-				<span class="hint">{c.hint}</span>
+				<span class="hint" title={c.hint === 'copy' ? 'Click to copy' : 'Open link'}>
+					<Icon name={c.hint === 'copy' ? 'copy' : 'external-link'} size={15} />
+				</span>
 			</button>
 		{/each}
 	</div>

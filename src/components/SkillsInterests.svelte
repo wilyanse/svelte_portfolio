@@ -2,6 +2,7 @@
 	import { scale } from 'svelte/transition';
 	import Modal from './Modal.svelte';
 	import CloseButton from './CloseButton.svelte';
+	import Icon from './Icon.svelte';
 	import { closeModal } from '$lib/portfolio';
 	import data from '$lib/data/skills_interests.json';
 
@@ -15,14 +16,14 @@
 		<CloseButton on:close={closeModal} />
 	</div>
 
-	<div class="label">SKILLS</div>
+	<div class="label"><Icon name="code" size={15} /> SKILLS</div>
 	<div class="row">
 		{#each skills as s, i}
 			<span class="skill" in:scale={{ duration: 240, start: 0.9, delay: i * 50 }}>{s}</span>
 		{/each}
 	</div>
 
-	<div class="label">INTERESTS</div>
+	<div class="label"><Icon name="heart" size={15} /> INTERESTS</div>
 	<div class="row">
 		{#each interests as s, i}
 			<span class="interest" in:scale={{ duration: 240, start: 0.9, delay: i * 50 }}>{s}</span>
@@ -43,9 +44,12 @@
 		color: var(--accent);
 	}
 	.label {
+		display: flex;
+		align-items: center;
+		gap: 8px;
 		font-size: 13px;
 		font-weight: 700;
-		color: var(--tx2);
+		color: var(--accent);
 		margin: 26px 0 14px;
 		letter-spacing: 0.04em;
 	}

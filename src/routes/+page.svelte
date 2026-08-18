@@ -235,7 +235,7 @@
 					<div class="launcher-top">
 						<span class="launcher-icon"><Icon name={sec.icon} size={20} /></span>
 						<span class="launcher-n">{sec.n}</span>
-						<span class="launcher-arrow"><Icon name="arrow-right" size={15} /></span>
+						<span class="launcher-arrow"><Icon name="arrow-right" size={16} /></span>
 					</div>
 					<div>
 						<div class="launcher-title">{sec.title}</div>
