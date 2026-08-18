@@ -45,7 +45,7 @@
 
 	.panel {
 		width: min(var(--w), 94vw);
-		max-height: 86vh;
+		height: 86vh;
 		border-radius: 28px;
 		border: 1px solid var(--bd);
 		background: var(--panel-bg);
