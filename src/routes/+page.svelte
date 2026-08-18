@@ -16,13 +16,14 @@
 	import SkillsInterests from '../components/SkillsInterests.svelte';
 	import Contact from '../components/Contact.svelte';
 	import Toast from '../components/Toast.svelte';
+	import Icon from '../components/Icon.svelte';
 
-	const sections: { key: Section; n: string; title: string; teaser: string }[] = [
-		{ key: 'about', n: '01', title: 'About Me', teaser: 'Who I am & where I’m headed' },
-		{ key: 'background', n: '02', title: 'Background', teaser: 'Work experience & education' },
-		{ key: 'projects', n: '03', title: 'Projects', teaser: '7 things I’ve built' },
-		{ key: 'skills', n: '04', title: 'Skills & Interests', teaser: 'What I’m good at & into' },
-		{ key: 'contact', n: '05', title: 'Contact', teaser: 'Let’s connect' }
+	const sections: { key: Section; n: string; title: string; teaser: string; icon: string }[] = [
+		{ key: 'about', n: '01', title: 'About Me', teaser: 'Who I am & where I’m headed', icon: 'user' },
+		{ key: 'background', n: '02', title: 'Background', teaser: 'Work experience & education', icon: 'briefcase' },
+		{ key: 'projects', n: '03', title: 'Projects', teaser: '7 things I’ve built', icon: 'folder' },
+		{ key: 'skills', n: '04', title: 'Skills & Interests', teaser: 'What I’m good at & into', icon: 'sparkles' },
+		{ key: 'contact', n: '05', title: 'Contact', teaser: 'Let’s connect', icon: 'mail' }
 	];
 
 	// --- portrait parallax ---
@@ -63,11 +64,12 @@
 
 	<header class="header">
 		<div class="brand">
-			<div class="mark">W</div>
+			<div class="mark"><Icon name="terminal" size={20} /></div>
 			<div class="brand-name">WILL&rsquo;S PORTFOLIO</div>
 		</div>
 		<button class="theme-toggle" on:click={toggleTheme} aria-label="Toggle theme">
-			{$theme === 'dark' ? '☀  Light' : '☾  Dark'}
+			<Icon name={$theme === 'dark' ? 'sun' : 'moon'} size={15} />
+			{$theme === 'dark' ? 'Light' : 'Dark'}
 		</button>
 	</header>
 
@@ -84,9 +86,11 @@
 				</p>
 				<div class="cta rise d4">
 					<button class="btn btn-primary" on:click={() => openModal('projects')}>
-						See my work &rarr;
+						<Icon name="folder" size={17} /> See my work <Icon name="arrow-right" size={17} />
 					</button>
-					<button class="btn btn-ghost" on:click={() => openModal('contact')}>Get in touch</button>
+					<button class="btn btn-ghost" on:click={() => openModal('contact')}>
+						<Icon name="mail" size={17} /> Get in touch
+					</button>
 				</div>
 			</div>
 			<div class="portrait-parallax" style="transform:translate({px}px,{py}px);">
@@ -106,8 +110,9 @@
 					on:click={() => openModal(sec.key)}
 				>
 					<div class="launcher-top">
+						<span class="launcher-icon"><Icon name={sec.icon} size={20} /></span>
 						<span class="launcher-n">{sec.n}</span>
-						<span class="launcher-arrow">&rarr;</span>
+						<span class="launcher-arrow"><Icon name="arrow-right" size={16} /></span>
 					</div>
 					<div>
 						<div class="launcher-title">{sec.title}</div>
@@ -432,7 +437,22 @@
 	.launcher-top {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		gap: 10px;
+	}
+	.launcher-icon {
+		width: 38px;
+		height: 38px;
+		border-radius: 12px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: color-mix(in srgb, var(--accent) 16%, transparent);
+		color: var(--accent);
+		transition: background 0.18s, color 0.18s;
+	}
+	.launcher:hover .launcher-icon {
+		background: var(--accent);
+		color: var(--accent-ink);
 	}
 	.launcher-n {
 		font-family: 'JetBrains Mono', monospace;
@@ -441,15 +461,19 @@
 		color: var(--tx2);
 	}
 	.launcher-arrow {
-		width: 30px;
-		height: 30px;
-		border-radius: 99px;
+		margin-left: auto;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background: color-mix(in srgb, var(--accent) 16%, transparent);
+		color: var(--tx2);
+		transform: translateX(-4px);
+		opacity: 0;
+		transition: transform 0.18s, opacity 0.18s, color 0.18s;
+	}
+	.launcher:hover .launcher-arrow {
+		opacity: 1;
+		transform: translateX(0);
 		color: var(--accent);
-		font-size: 15px;
 	}
 	.launcher-title {
 		font-size: 17px;
