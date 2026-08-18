@@ -2,6 +2,7 @@
 	import { fly } from 'svelte/transition';
 	import Modal from './Modal.svelte';
 	import CloseButton from './CloseButton.svelte';
+	import Icon from './Icon.svelte';
 	import { closeModal } from '$lib/portfolio';
 	import projectsData from '$lib/data/projects.json';
 
@@ -15,14 +16,14 @@
 
 	const projects: Project[] = Object.values(projectsData) as Project[];
 
-	const filterOptions = [
-		'Data Science',
-		'Web Development',
-		'Machine Learning',
-		'Game Development',
-		'Blockchain',
-		'IOT',
-		'Automation'
+	const filterOptions: { label: string; icon: string }[] = [
+		{ label: 'Data Science', icon: 'target' },
+		{ label: 'Web Development', icon: 'code' },
+		{ label: 'Machine Learning', icon: 'sparkles' },
+		{ label: 'Game Development', icon: 'terminal' },
+		{ label: 'Blockchain', icon: 'code' },
+		{ label: 'IOT', icon: 'map-pin' },
+		{ label: 'Automation', icon: 'check' }
 	];
 
 	let active: string[] = [];
@@ -44,8 +45,12 @@
 			<div class="eyebrow">03 &mdash; PROJECTS</div>
 			<div class="filters">
 				{#each filterOptions as f}
-					<button class="pill" class:active={active.includes(f)} on:click={() => toggle(f)}>
-						{f}
+					<button
+						class="pill"
+						class:active={active.includes(f.label)}
+						on:click={() => toggle(f.label)}
+					>
+						<Icon name={f.icon} size={13} /> {f.label}
 					</button>
 				{/each}
 			</div>
@@ -64,7 +69,7 @@
 			>
 				<div class="card-head">
 					<span class="card-name">{p.name}</span>
-					<span class="arrow">&#8599;</span>
+					<span class="arrow"><Icon name="arrow-up-right" size={16} /></span>
 				</div>
 				<p class="card-desc">{p.desc}</p>
 				<div class="tags">
@@ -98,6 +103,9 @@
 		gap: 7px;
 	}
 	.pill {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
 		height: 30px;
 		padding: 0 13px;
 		border-radius: 99px;

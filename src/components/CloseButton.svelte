@@ -1,9 +1,12 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
+	import Icon from './Icon.svelte';
 	const dispatch = createEventDispatcher<{ close: void }>();
 </script>
 
-<button class="close" aria-label="Close" on:click={() => dispatch('close')}>&times;</button>
+<button class="close" aria-label="Close" on:click={() => dispatch('close')}>
+	<Icon name="x" size={18} />
+</button>
 
 <style lang="postcss">
 	.close {
@@ -15,8 +18,9 @@
 		background: var(--tile);
 		color: var(--tx);
 		cursor: pointer;
-		font-size: 20px;
-		line-height: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		font-family: inherit;
 		transition: border-color 0.15s, transform 0.15s;
 	}

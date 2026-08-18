@@ -16,14 +16,89 @@
 	import SkillsInterests from '../components/SkillsInterests.svelte';
 	import Contact from '../components/Contact.svelte';
 	import Toast from '../components/Toast.svelte';
+	import Icon from '../components/Icon.svelte';
+	import projectsData from '$lib/data/projects.json';
 
-	const sections: { key: Section; n: string; title: string; teaser: string }[] = [
-		{ key: 'about', n: '01', title: 'About Me', teaser: 'Who I am & where I’m headed' },
-		{ key: 'background', n: '02', title: 'Background', teaser: 'Work experience & education' },
-		{ key: 'projects', n: '03', title: 'Projects', teaser: '7 things I’ve built' },
-		{ key: 'skills', n: '04', title: 'Skills & Interests', teaser: 'What I’m good at & into' },
-		{ key: 'contact', n: '05', title: 'Contact', teaser: 'Let’s connect' }
+	const projectCount = Object.keys(projectsData).length;
+
+	const sections: { key: Section; n: string; title: string; teaser: string; icon: string }[] = [
+		{ key: 'about', n: '01', title: 'About Me', teaser: 'Who I am & where I’m headed', icon: 'user' },
+		{ key: 'background', n: '02', title: 'Background', teaser: 'Work experience & education', icon: 'briefcase' },
+		{ key: 'projects', n: '03', title: 'Projects', teaser: `${projectCount} things I’ve built`, icon: 'folder' },
+		{ key: 'skills', n: '04', title: 'Skills & Interests', teaser: 'What I’m good at & into', icon: 'sparkles' },
+		{ key: 'contact', n: '05', title: 'Contact', teaser: 'Let’s connect', icon: 'mail' }
 	];
+
+	// --- typing intro ---
+	const nouns = [
+		'a programmer',
+		'a computer science graduate',
+		'a UP graduate',
+		'a software developer',
+		'a gymbro',
+		'a geek',
+		'a conyo',
+		'a data nerd',
+		'a Masters TFT player',
+		'a Bebop main',
+		'a switch axe main',
+		'a DOTA addict',
+		'a middle class Filipino',
+		'an android enjoyer',
+		'a Davaoenyo',
+		'a Jordan Peele fanatic',
+		'a romance enjoyer',
+		'an aspiring marathon runner',
+		'an Urban Revivo fanatic',
+		'a sweets enjoyer',
+		'a laagan',
+		'a masochist',
+		'a genetically balding man',
+		'someone whose chronically online',
+		'a lazy person',
+		'a switch owner',
+		'a Hololive enthusiast',
+		'a vtuber enabler',
+		'a Jhin main',
+		'a Graves abuser',
+		'a Jarvan enjoyer',
+		'a washed dota player',
+		'an ability draft enjoyer',
+		'a lazy tiktok vlogger',
+		'a gambling addict',
+		'an efficiency enjoyer',
+		'a former alcoholic',
+		'a big back',
+		'a food enjoyer',
+		'a former obese boy',
+		'a giant weeb',
+		'a dairy queen addict',
+		'a chronic walker',
+		'a gymrat',
+		'a laufey enjoyer',
+		'a book buyer',
+		'a ChatGPT abuser'
+	];
+
+	// Sentence pieces — only `job` and the noun are accentuated.
+	const introPre = 'Currently working as a ';
+	const job = 'Cloud Engineer';
+	const introMid = ', also I’m ';
+	const introPrefix = introPre + job + introMid;
+
+	// Boundaries within the typed string (a prefix of the full sentence).
+	const bJobStart = introPre.length;
+	const bJobEnd = bJobStart + job.length;
+	const bNounStart = introPrefix.length;
+
+	let typed = '';
+	let caretVisible = true;
+
+	function pickNoun(exclude: string) {
+		let n = exclude;
+		while (n === exclude) n = nouns[Math.floor(Math.random() * nouns.length)];
+		return n;
+	}
 
 	// --- portrait parallax ---
 	let px = 0;
@@ -48,6 +123,51 @@
 
 	onMount(() => {
 		reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+		let cancelled = false;
+		const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+		async function runTyping() {
+			let current = '';
+			if (reduceMotion) {
+				// No animation: just show one static sentence.
+				typed = introPrefix + pickNoun('');
+				caretVisible = false;
+				return;
+			}
+			while (!cancelled) {
+				const noun = pickNoun(current);
+				current = noun;
+				const full = introPrefix + noun;
+				// type
+				for (let i = typed.length; i <= full.length; i++) {
+					if (cancelled) return;
+					typed = full.slice(0, i);
+					await sleep(45);
+				}
+				// hold ~5s
+				await sleep(5000);
+				if (cancelled) return;
+				// erase back to just after the prefix
+				for (let i = full.length; i >= introPrefix.length; i--) {
+					if (cancelled) return;
+					typed = full.slice(0, i);
+					await sleep(25);
+				}
+			}
+		}
+
+		// blinking caret
+		const caretTimer = setInterval(() => {
+			caretVisible = !caretVisible;
+		}, 500);
+
+		runTyping();
+
+		return () => {
+			cancelled = true;
+			clearInterval(caretTimer);
+		};
 	});
 </script>
 
@@ -63,11 +183,12 @@
 
 	<header class="header">
 		<div class="brand">
-			<div class="mark">W</div>
+			<div class="mark"><Icon name="terminal" size={20} /></div>
 			<div class="brand-name">WILL&rsquo;S PORTFOLIO</div>
 		</div>
 		<button class="theme-toggle" on:click={toggleTheme} aria-label="Toggle theme">
-			{$theme === 'dark' ? '☀  Light' : '☾  Dark'}
+			<Icon name={$theme === 'dark' ? 'sun' : 'moon'} size={15} />
+			{$theme === 'dark' ? 'Light' : 'Dark'}
 		</button>
 	</header>
 
@@ -79,14 +200,20 @@
 				<div class="eyebrow rise d1">HELLO, WORLD &mdash; WELCOME</div>
 				<h1 class="rise d2">Hi, I&rsquo;m<br /><span class="accent">Will.</span></h1>
 				<p class="lead rise d3">
-					You&rsquo;ve made it to my portfolio. A big data fan aspiring to become a
-					<span class="accent">Data Scientist</span>.
+					You&rsquo;ve made it to my portfolio.<br />
+					<span>{typed.slice(0, bJobStart)}</span><span class="accent"
+						>{typed.slice(bJobStart, bJobEnd)}</span
+					><span>{typed.slice(bJobEnd, bNounStart)}</span><span class="accent"
+						>{typed.slice(bNounStart)}</span
+					><span class="caret" class:on={caretVisible} aria-hidden="true">|</span>
 				</p>
 				<div class="cta rise d4">
 					<button class="btn btn-primary" on:click={() => openModal('projects')}>
-						See my work &rarr;
+						<Icon name="folder" size={17} /> See my work <Icon name="arrow-right" size={17} />
 					</button>
-					<button class="btn btn-ghost" on:click={() => openModal('contact')}>Get in touch</button>
+					<button class="btn btn-ghost" on:click={() => openModal('contact')}>
+						<Icon name="mail" size={17} /> Get in touch
+					</button>
 				</div>
 			</div>
 			<div class="portrait-parallax" style="transform:translate({px}px,{py}px);">
@@ -106,8 +233,9 @@
 					on:click={() => openModal(sec.key)}
 				>
 					<div class="launcher-top">
+						<span class="launcher-icon"><Icon name={sec.icon} size={20} /></span>
 						<span class="launcher-n">{sec.n}</span>
-						<span class="launcher-arrow">&rarr;</span>
+						<span class="launcher-arrow"><Icon name="arrow-right" size={16} /></span>
 					</div>
 					<div>
 						<div class="launcher-title">{sec.title}</div>
@@ -323,7 +451,17 @@
 		font-size: clamp(15px, 1.5vw, 21px);
 		font-weight: 600;
 		line-height: 1.35;
-		max-width: 26ch;
+		max-width: 30ch;
+		min-height: 4.05em; /* 3 lines — keeps layout steady while text types/erases */
+	}
+	.caret {
+		color: var(--accent);
+		font-weight: 400;
+		opacity: 0;
+		margin-left: 1px;
+	}
+	.caret.on {
+		opacity: 1;
 	}
 	.cta {
 		margin-top: 22px;
@@ -432,7 +570,22 @@
 	.launcher-top {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		gap: 10px;
+	}
+	.launcher-icon {
+		width: 38px;
+		height: 38px;
+		border-radius: 12px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: color-mix(in srgb, var(--accent) 16%, transparent);
+		color: var(--accent);
+		transition: background 0.18s, color 0.18s;
+	}
+	.launcher:hover .launcher-icon {
+		background: var(--accent);
+		color: var(--accent-ink);
 	}
 	.launcher-n {
 		font-family: 'JetBrains Mono', monospace;
@@ -441,15 +594,19 @@
 		color: var(--tx2);
 	}
 	.launcher-arrow {
-		width: 30px;
-		height: 30px;
-		border-radius: 99px;
+		margin-left: auto;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background: color-mix(in srgb, var(--accent) 16%, transparent);
+		color: var(--tx2);
+		transform: translateX(-4px);
+		opacity: 0;
+		transition: transform 0.18s, opacity 0.18s, color 0.18s;
+	}
+	.launcher:hover .launcher-arrow {
+		opacity: 1;
+		transform: translateX(0);
 		color: var(--accent);
-		font-size: 15px;
 	}
 	.launcher-title {
 		font-size: 17px;
