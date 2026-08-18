@@ -12,13 +12,14 @@
             "SQL",
             "Python",
             "Pandas",
-            "MatPlotLib"
+            "MatPlotLib",
+            "Numpy"
         ]
     },
     "1": {
         "name": "ReciKeep",
         "desc": "Fullstack Decentralized Web App that uses the Arbitrum Sepolia testnet that was developed in Solidity with a web app that uses SvelteKit. Note that you may need a MetaMask wallet in order to view the contents of the DAPP on https://blk-recikeep.vercel.app/.",
-        "link": "https://drive.google.com/file/d/1mJzJm2bg-TjrGveaiePCmcTU959jb0me/view?usp=sharing",
+        "link": "https://blk-recikeep.vercel.app/",
         "stack": [
             "Solidity",
             "SvelteKit",
@@ -101,6 +102,33 @@
         "keywords": [
             "Web Development"
         ]
-
+    },
+    "7": {
+        "name": "Developer Blog",
+        "desc": "A blog page that displays the projects that I'm working on, mainly those that don't have a UI such as data analysis and data engineering. Currently being updated, with the latest published chapter handling Linear Optimization for Meal Optimization.",
+        "link": "https://dev.to/wilyanse",
+        "stack": [
+            "Python",
+            "Pandas",
+            "puLP"
+        ],
+        "keywords": [
+            "Data Science",
+            "Data Engineering",
+            "Automation"
+        ]
+    },
+    "8": {
+        "name": "Automated TikTok Vlog Creator",
+        "desc": "An automated batch and Python script that stitches together videos where the pipeline automatically takes them from Google Photos and creates a stitched up video log from the videos that were taken the day before. Currently being updated, mainly working on improving the video editing side of the Python script.",
+        "link": "https://www.tiktok.com/@wilyanse",
+        "stack": [
+            "Python",
+            "Moviepy"
+        ],
+        "keywords": [
+            "Data Engineering",
+            "Automation"
+        ]
     }
 }
