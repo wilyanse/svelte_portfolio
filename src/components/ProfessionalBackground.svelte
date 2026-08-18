@@ -13,20 +13,39 @@
 		dates: string;
 		details: string[];
 		stack: string[];
+		icon: string;
 	};
 
 	// Sort by numeric key so the most recent entry (lowest key, e.g. "-1") leads.
-	const byKey = <T>(obj: Record<string, T>): T[] =>
+	const byKey = <T,>(obj: Record<string, T>): T[] =>
 		Object.entries(obj)
 			.sort((a, b) => Number(a[0]) - Number(b[0]))
 			.map(([, v]) => v);
+
+	// Map a job title / education level to an evocative icon.
+	const iconForPosition = (position: string): string => {
+		const p = position.toLowerCase();
+		if (p.includes('cloud')) return 'cloud';
+		if (p.includes('fullstack') || p.includes('full stack')) return 'layers';
+		if (p.includes('data')) return 'database';
+		if (p.includes('game')) return 'gamepad-2';
+		if (p.includes('web')) return 'globe';
+		return 'code';
+	};
+	const iconForLevel = (level: string): string => {
+		const l = level.toLowerCase();
+		if (l.includes('graduate')) return 'graduation-cap';
+		if (l.includes('secondary')) return 'book-open';
+		return 'pencil';
+	};
 
 	const work: Entry[] = byKey(workData).map((w) => ({
 		title: w.position,
 		sub: w.company,
 		dates: `${w.start_date} – ${w.end_date}`,
 		details: w.details,
-		stack: (w as { stack?: string[] }).stack ?? []
+		stack: (w as { stack?: string[] }).stack ?? [],
+		icon: iconForPosition(w.position)
 	}));
 
 	const education: Entry[] = byKey(educData).map((e) => ({
@@ -34,7 +53,8 @@
 		sub: e.school,
 		dates: `${e.start_date} – ${e.end_date}`,
 		details: e.details,
-		stack: []
+		stack: [],
+		icon: iconForLevel(e.level)
 	}));
 
 	let tab: 'work' | 'education' = 'work';
@@ -69,6 +89,7 @@
 		<div class="master">
 			{#each list as entry, i (tab + i)}
 				<button class="entry" class:active={index === i} on:click={() => (index = i)}>
+					<span class="entry-icon"><Icon name={entry.icon} size={17} /></span>
 					<span class="entry-title">{entry.title}</span>
 					<span class="entry-sub">{entry.sub}</span>
 					<span class="entry-dates">{entry.dates}</span>
@@ -79,7 +100,10 @@
 		{#key tab + index}
 			<div class="detail" in:fly={{ y: 10, duration: 300 }}>
 				<div class="detail-dates">{detail.dates}</div>
-				<h2 class="detail-title">{detail.title}</h2>
+				<h2 class="detail-title">
+					<span class="detail-icon"><Icon name={detail.icon} size={24} /></span>
+					{detail.title}
+				</h2>
 				<div class="detail-sub">{detail.sub}</div>
 				<div class="details-list">
 					{#each detail.details as d}
@@ -178,7 +202,9 @@
 		border-radius: 15px;
 		background: var(--tile2);
 		border: 1px solid var(--bd);
-		transition: border-color 0.16s, transform 0.16s;
+		transition:
+			border-color 0.16s,
+			transform 0.16s;
 	}
 	.entry:hover {
 		border-color: color-mix(in srgb, var(--accent) 50%, var(--bd));
@@ -186,6 +212,15 @@
 	.entry.active {
 		border-color: var(--accent);
 		transform: translateX(3px);
+	}
+	.entry-icon {
+		color: var(--tx2);
+		margin-bottom: 4px;
+		transition: color 0.16s;
+	}
+	.entry.active .entry-icon,
+	.entry:hover .entry-icon {
+		color: var(--accent);
 	}
 	.entry-title {
 		font-weight: 700;
@@ -218,6 +253,14 @@
 		font-weight: 800;
 		letter-spacing: -0.01em;
 		line-height: 1.1;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+	.detail-icon {
+		color: var(--accent);
+		display: inline-flex;
+		flex: 0 0 auto;
 	}
 	.detail-sub {
 		font-size: 15px;
