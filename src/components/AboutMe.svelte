@@ -1,85 +1,150 @@
-<script>
-	import Wrapper from "./Wrapper.svelte";
-    import logo from '$lib/images/logo.png';
+<script lang="ts">
+	import { fly } from 'svelte/transition';
+	import Modal from './Modal.svelte';
+	import CloseButton from './CloseButton.svelte';
+	import { closeModal } from '$lib/portfolio';
+	import logo from '$lib/images/logo.png';
+
+	const items = {
+		done: [
+			'Aspired to become a Game Developer',
+			'Worked in Software Development',
+			'Transitioned to Web Development'
+		],
+		aim: [
+			'Work with data professionally',
+			'Develop skills in other CS fields as a hobby',
+			'Leave my mark on the world!'
+		]
+	};
+
+	let mode: 'done' | 'aim' = 'done';
 </script>
-<Wrapper id="About Me">
-    <div class="grid grid-rows-5 gap-3 place-items-center p-20 space-y-5 min-h-full">
-        <div class="variant-ghost-secondary p-10 self-center card-hover">
-            <h1>ABOUT ME</h1>
-        </div>
-        <div class="space-y-5 text-pretty text-center my-5">
-            <h2>
-                My name's
-                <a href="#Contact" class="variant-glass-tertiary p-3 inline card-hover">
-                    <img src={logo} alt="Face logo" />
-                    <strong>Wil</strong>l Br<strong>yan</strong> Jo<strong>se</strong>
-                </a>,
-                and I'm a big data fan, aspiring to one day become a <strong>Data Scientist</strong>.
-            </h2>
-            <h3>
-                I've worked in several fields of computer science, which you will find out about the more that you scroll through this portfolio website.
-            </h3>
-        </div>
-        <div class="row-span-2 row-start-3 grid grid-cols-2 gap-40">
-            <div class="variant-ghost-primary w-full card-hover">
-                <h2 class="font-semibold p-5">What have I <strong>done?</strong></h2>
-                <div class="p-5 space-y-5">
-                    <div class="flex flex-row space-x-5">
-                        <svg class="h-8 w-8 text-tertiary-300"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <rect x="2" y="6" width="20" height="12" rx="2" />  <path d="M6 12h4m-2 -2v4" />  <line x1="15" y1="11" x2="15" y2="11.01" />  <line x1="18" y1="13" x2="18" y2="13.01" /></svg>
-                        <h3>Become a <strong>Game Developer</strong></h3>
-                    </div>
-                    <div class="flex flex-row space-x-5">
-                        <svg class="h-8 w-8 text-tertiary-300"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <rect x="4" y="4" width="6" height="6" rx="1" />  <rect x="4" y="14" width="6" height="6" rx="1" />  <rect x="14" y="14" width="6" height="6" rx="1" />  <line x1="14" y1="7" x2="20" y2="7" />  <line x1="17" y1="4" x2="17" y2="10" /></svg>
-                        <h3>Worked with <strong>Software Development</strong></h3>
-                    </div>
-                    <div class="flex flex-row space-x-5">
-                        <svg class="h-8 w-8 text-tertiary-300"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <circle cx="12" cy="12" r="10" />  <line x1="2" y1="12" x2="22" y2="12" />  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
-                        <h3>Transitioned to <strong>Web Development</strong></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="variant-ghost-primary w-full card-hover">
-                <h2 class="font-semibold p-5">What do I <strong>aim to do?</strong></h2>
-                <div class="p-5 space-y-5">
-                    <div class="flex flex-row space-x-5">
-                        <svg class="h-8 w-8 text-tertiary-300"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <ellipse cx="12" cy="6" rx="8" ry="3"></ellipse>  <path d="M4 6v6a8 3 0 0 0 16 0v-6" />  <path d="M4 12v6a8 3 0 0 0 16 0v-6" /></svg>
-                        <h3>Work with data <strong>professionally</strong></h3>
-                    </div>
-                    <div class="flex flex-row space-x-5">
-                        <svg class="h-8 w-8 text-tertiary-300"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />  <polyline points="17 6 23 6 23 12" /></svg>
-                        <h3><strong>Develop my skills</strong> as a hobby</h3>
-                    </div>
-                    <div class="flex flex-row space-x-5">
-                        <svg class="h-8 w-8 text-tertiary-300"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="9" cy="7" r="4" />  <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />  <line x1="19" y1="7" x2="19" y2="10" />  <line x1="19" y1="14" x2="19" y2="14.01" /></svg>
-                        <h3><strong>Leave my mark on the world!</strong></h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <a href="#Professional Background" class="btn variant-ghost-secondary text-xl font-bold self-center mx-auto">Interested in my professional background?</a>
-        </div>
-    </div>
-</Wrapper>
+
+<Modal width="760px" on:close={closeModal}>
+	<div class="head">
+		<div class="eyebrow">01 &mdash; ABOUT ME</div>
+		<CloseButton on:close={closeModal} />
+	</div>
+
+	<div class="name-row">
+		<img src={logo} alt="Will" />
+		<h2>Will Bryan Jose</h2>
+	</div>
+
+	<p class="intro">
+		I&rsquo;m a big data fan aspiring to one day become a <strong>Data Scientist</strong>. I&rsquo;ve
+		worked across several fields of computer science &mdash; and the more you explore, the more
+		you&rsquo;ll find out.
+	</p>
+
+	<div class="tabs">
+		<button class="tab" class:active={mode === 'done'} on:click={() => (mode = 'done')}>
+			What I&rsquo;ve done
+		</button>
+		<button class="tab" class:active={mode === 'aim'} on:click={() => (mode = 'aim')}>
+			What I aim to do
+		</button>
+	</div>
+
+	<div class="list">
+		{#each items[mode] as text, i (mode + i)}
+			<div class="item" in:fly={{ y: 12, duration: 320, delay: i * 60 }}>
+				<span class="dot" />
+				<span>{text}</span>
+			</div>
+		{/each}
+	</div>
+</Modal>
 
 <style lang="postcss">
-    h1 {
-        @apply font-bold text-7xl h1;
-    }
-
-    h2 {
-        @apply h2 text-3xl;
-    }
-
-    h3 {
-        @apply h3;
-    }
-
-    strong {
-        @apply font-bold;
-    }
-
-    img {
-        @apply max-w-10 h-auto inline;
-    }
+	.head {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+	}
+	.eyebrow {
+		font-family: 'JetBrains Mono', monospace;
+		font-size: 11px;
+		letter-spacing: 0.16em;
+		color: var(--accent);
+	}
+	.name-row {
+		display: flex;
+		align-items: center;
+		gap: 22px;
+		margin: 20px 0 8px;
+	}
+	.name-row img {
+		width: 92px;
+		height: 92px;
+		flex: 0 0 auto;
+		object-fit: contain;
+		border-radius: 24px;
+		background: color-mix(in srgb, var(--accent) 12%, transparent);
+		padding: 6px;
+	}
+	.name-row h2 {
+		margin: 0;
+		font-size: 34px;
+		font-weight: 900;
+		letter-spacing: -0.02em;
+		line-height: 1.05;
+	}
+	.intro {
+		margin: 0 0 26px;
+		font-size: 18px;
+		line-height: 1.5;
+		color: var(--tx);
+	}
+	.intro strong {
+		color: var(--accent);
+	}
+	.tabs {
+		display: flex;
+		gap: 8px;
+		margin-bottom: 18px;
+	}
+	.tab {
+		padding: 7px 16px;
+		border-radius: 99px;
+		border: none;
+		background: transparent;
+		color: var(--tx2);
+		font-weight: 600;
+		font-size: 12px;
+		cursor: pointer;
+		font-family: inherit;
+		transition: all 0.15s;
+	}
+	.tab.active {
+		background: var(--accent);
+		color: var(--accent-ink);
+		font-weight: 700;
+	}
+	.list {
+		display: flex;
+		flex-direction: column;
+		gap: 11px;
+	}
+	.item {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+		padding: 15px 18px;
+		border-radius: 16px;
+		background: var(--tile2);
+		border: 1px solid var(--bd);
+	}
+	.item span:not(.dot) {
+		font-size: 16px;
+		font-weight: 600;
+	}
+	.dot {
+		width: 10px;
+		height: 10px;
+		border-radius: 4px;
+		background: var(--accent);
+		flex: 0 0 auto;
+	}
 </style>

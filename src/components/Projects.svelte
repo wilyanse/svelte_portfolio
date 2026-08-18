@@ -1,134 +1,203 @@
 <script lang="ts">
-	import Wrapper from "./Wrapper.svelte";
+	import { fly } from 'svelte/transition';
+	import Modal from './Modal.svelte';
+	import CloseButton from './CloseButton.svelte';
+	import { closeModal } from '$lib/portfolio';
+	import projectsData from '$lib/data/projects.json';
 
-    import { Autocomplete } from '@skeletonlabs/skeleton';
-    import type { AutocompleteOption } from '@skeletonlabs/skeleton';
+	type Project = {
+		name: string;
+		desc: string;
+		link: string;
+		keywords: string[];
+		stack: string[];
+	};
 
-    import { popup, type PopupSettings } from "@skeletonlabs/skeleton";
+	const projects: Project[] = Object.values(projectsData) as Project[];
 
-    import projectsData from "$lib/data/projects.json";
+	const filterOptions = [
+		'Data Science',
+		'Web Development',
+		'Machine Learning',
+		'Game Development',
+		'Blockchain',
+		'IOT',
+		'Automation'
+	];
 
-    import { InputChip } from '@skeletonlabs/skeleton';
+	let active: string[] = [];
 
-    function generateAutocompleteOptions(projectsData: ProjectsData): AutocompleteOption<string>[] {
-        const combinedOptions: Set<string> = new Set();
-
-        for (const [id, fields] of Object.entries(projectsData)) {
-            const stack = fields.stack;
-            const keywords = fields.keywords;
-
-            // Combine stack and keywords into the set to avoid duplicates
-            stack.forEach((item: string) => combinedOptions.add(item));
-            keywords.forEach((item: string) => combinedOptions.add(item));
-        }
-
-        // Convert the set to an array of AutocompleteOption
-        const autocompleteOptions: AutocompleteOption<string>[] = Array.from(combinedOptions).map(item => ({
-            label: item,
-            value: item,
-        }));
-
-        return autocompleteOptions;
-    }
-
-    const flavorOptions = generateAutocompleteOptions(projectsData);
-
-	function onInputChipSelect(event: CustomEvent<FlavorOption>): void {
-		console.log('onInputChipSelect', event.detail);
-		if (inputChipList.includes(event.detail.value) === false) {
-			inputChipList = [...inputChipList, event.detail.value];
-			inputChip = '';
-		}
+	function toggle(filter: string) {
+		active = active.includes(filter)
+			? active.filter((f) => f !== filter)
+			: [...active, filter];
 	}
 
-    let inputChip = '';
-
-    let inputChipList: string[] = [];
-
-    function hasCommonElement(arr1: string[], arr2: string[]): boolean {
-        // Convert the first array to a Set for O(1) lookup time
-        const set1 = new Set(arr1);
-
-        // Iterate through the second array and check for any common element
-        for (const element of arr2) {
-            if (set1.has(element)) {
-                return true; // Return true as soon as a common element is found
-            }
-        }
-
-        return false; // Return false if no common elements are found
-    }
+	$: view = active.length
+		? projects.filter((p) => active.some((f) => p.keywords.includes(f)))
+		: projects;
 </script>
-<Wrapper id="Projects">
-    <div class="max-h-screen max-w-screen-lg p-2.5 flex flex-col gap-4 place-items-center space-y-3">
-        <div class="variant-ghost-secondary p-10 self-center mx-auto card-hover">
-            <h1>PROJECTS</h1>
-        </div>
-        <div class="w-full">
-            <InputChip bind:input={inputChip} bind:value={inputChipList} name="chips" />
-            <div class="card w-full h-32 p-4 overflow-y-auto" tabindex="-1">
-                <Autocomplete
-                    bind:input={inputChip}
-                    options={flavorOptions}
-                    denylist={inputChipList}
-                    on:selection={onInputChipSelect}
-                />
-            </div>
-        </div>
-        <div class="max-w-screen-lg">
-            {#if inputChipList.length > 0}
-            <div class="flex snap-x scroll-px-4 snap-mandatory scroll-smooth gap-4 overflow-x-auto px-4 py-2">
-                {#each Object.entries(projectsData) as [id, fields]}
-                    {#if hasCommonElement(inputChipList, fields.keywords) ||  hasCommonElement(inputChipList, fields.stack)}
-                        <a href="{fields.link}" target="_blank" class="snap-start shrink-0 card py-3 w-80 h-80 text-center variant variant-ghost-primary grid grid-rows-5 card-hover">
-                            <header class="card-header m-auto row-span-2">
-                                <h4>
-                                    {fields.name}
-                                </h4>
-                                
-                            </header>
-                            <footer class="card-footer mx-auto row-span-3">
-                                <h5>{fields.desc}</h5>
-                            </footer>
-                        </a>
-                    {/if}
-                {/each}
-            </div>
-            {:else}
-            <div class="flex snap-x scroll-px-4 snap-mandatory scroll-smooth gap-4 overflow-x-auto px-4 py-2">
-                {#each Object.entries(projectsData) as [id, fields]}
-                    <a href="{fields.link}" target="_blank" class="snap-start shrink-0 card py-3 w-80 h-80 text-center variant variant-ghost-primary grid grid-rows-5 card-hover mx-auto">
-                        <header class="card-header m-auto row-span-2">
-                            <h4>
-                                {fields.name}
-                            </h4>
-                            
-                        </header>
-                        <footer class="card-footer mx-auto row-span-3">
-                            <h5>{fields.desc}</h5>
-                        </footer>
-                    </a>
-                {/each}
-            </div>
-            {/if}           
-        </div>
-        <div>
-            <a href="#Contact" class="btn variant-ghost-secondary text-xl font-bold self-center mx-auto">How can I contact you?</a>
-        </div>
-    </div>
-</Wrapper>
+
+<Modal width="1040px" layout="flex" on:close={closeModal}>
+	<div class="head">
+		<div>
+			<div class="eyebrow">03 &mdash; PROJECTS</div>
+			<div class="filters">
+				{#each filterOptions as f}
+					<button class="pill" class:active={active.includes(f)} on:click={() => toggle(f)}>
+						{f}
+					</button>
+				{/each}
+			</div>
+		</div>
+		<CloseButton on:close={closeModal} />
+	</div>
+
+	<div class="grid">
+		{#each view as p, i (p.name)}
+			<a
+				class="card"
+				href={p.link}
+				target="_blank"
+				rel="noreferrer noopener"
+				in:fly={{ y: 16, duration: 320, delay: i * 45 }}
+			>
+				<div class="card-head">
+					<span class="card-name">{p.name}</span>
+					<span class="arrow">&#8599;</span>
+				</div>
+				<p class="card-desc">{p.desc}</p>
+				<div class="tags">
+					{#each p.stack.slice(0, 3) as t}
+						<span class="tag">{t}</span>
+					{/each}
+				</div>
+			</a>
+		{/each}
+	</div>
+</Modal>
 
 <style lang="postcss">
-    h1 {
-        @apply font-bold text-5xl h1 text-center;
-    }
+	.head {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin-bottom: 18px;
+		gap: 20px;
+	}
+	.eyebrow {
+		font-family: 'JetBrains Mono', monospace;
+		font-size: 11px;
+		letter-spacing: 0.16em;
+		color: var(--accent);
+		margin-bottom: 12px;
+	}
+	.filters {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 7px;
+	}
+	.pill {
+		height: 30px;
+		padding: 0 13px;
+		border-radius: 99px;
+		border: 1px solid var(--bd);
+		background: transparent;
+		color: var(--tx2);
+		font-weight: 600;
+		font-size: 11px;
+		cursor: pointer;
+		font-family: inherit;
+		transition: all 0.15s;
+	}
+	.pill:hover {
+		border-color: color-mix(in srgb, var(--accent) 50%, var(--bd));
+		color: var(--tx);
+	}
+	.pill.active {
+		border-color: transparent;
+		background: var(--accent);
+		color: var(--accent-ink);
+		font-weight: 700;
+	}
 
-    h5 {
-        @apply h6 text-justify;
-    }
+	.grid {
+		flex: 1;
+		min-height: 0;
+		overflow: auto;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 14px;
+		align-content: start;
+		padding-right: 4px;
+	}
+	.card {
+		display: flex;
+		flex-direction: column;
+		gap: 9px;
+		padding: 18px;
+		border-radius: 18px;
+		background: var(--tile2);
+		border: 1px solid var(--bd);
+		color: var(--tx);
+		text-decoration: none;
+		transition: transform 0.16s, border-color 0.16s, box-shadow 0.16s;
+	}
+	.card:hover {
+		transform: translateY(-4px);
+		border-color: var(--accent);
+		box-shadow: 0 18px 36px -20px var(--accent);
+	}
+	.card-head {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 8px;
+	}
+	.card-name {
+		font-weight: 800;
+		font-size: 15px;
+		line-height: 1.15;
+	}
+	.arrow {
+		color: var(--accent);
+		font-size: 15px;
+		flex: 0 0 auto;
+	}
+	.card-desc {
+		margin: 0;
+		font-size: 12.5px;
+		line-height: 1.45;
+		color: var(--tx2);
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		line-clamp: 4;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 5px;
+		margin-top: auto;
+	}
+	.tag {
+		font-family: 'JetBrains Mono', monospace;
+		font-size: 10px;
+		padding: 4px 8px;
+		border-radius: 99px;
+		background: color-mix(in srgb, var(--accent) 14%, transparent);
+		color: var(--tx);
+	}
 
-    h4 {
-        @apply font-bold;
-    }
-
+	@media (max-width: 900px) {
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+	@media (max-width: 560px) {
+		.grid {
+			grid-template-columns: 1fr;
+		}
+	}
 </style>

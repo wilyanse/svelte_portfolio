@@ -3,7 +3,11 @@
 @tailwind utilities;
 @tailwind variants;
 
-html,
+html {
+	@apply h-full;
+}
+
 body {
-	@apply h-full overflow-hidden;
+	@apply min-h-full;
+	overflow-x: hidden;
 }
