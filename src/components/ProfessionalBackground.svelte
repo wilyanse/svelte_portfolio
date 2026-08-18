@@ -2,6 +2,7 @@
 	import { fly } from 'svelte/transition';
 	import Modal from './Modal.svelte';
 	import CloseButton from './CloseButton.svelte';
+	import Icon from './Icon.svelte';
 	import { closeModal } from '$lib/portfolio';
 	import workData from '$lib/data/work_exp.json';
 	import educData from '$lib/data/education.json';
@@ -53,9 +54,11 @@
 		<div class="head-left">
 			<div class="eyebrow">02 &mdash; BACKGROUND</div>
 			<div class="switch">
-				<button class="seg" class:active={tab === 'work'} on:click={() => setTab('work')}>Work</button>
+				<button class="seg" class:active={tab === 'work'} on:click={() => setTab('work')}>
+					<Icon name="briefcase" size={14} /> Work
+				</button>
 				<button class="seg" class:active={tab === 'education'} on:click={() => setTab('education')}>
-					Education
+					<Icon name="graduation-cap" size={14} /> Education
 				</button>
 			</div>
 		</div>
@@ -81,7 +84,7 @@
 				<div class="details-list">
 					{#each detail.details as d}
 						<div class="detail-row">
-							<span class="dash">&mdash;</span>
+							<span class="dash"><Icon name="check" size={16} /></span>
 							<span>{d}</span>
 						</div>
 					{/each}
@@ -129,6 +132,9 @@
 		border: 1px solid var(--bd);
 	}
 	.seg {
+		display: inline-flex;
+		align-items: center;
+		gap: 7px;
 		padding: 7px 16px;
 		border-radius: 99px;
 		border: none;
@@ -233,7 +239,9 @@
 	.dash {
 		color: var(--accent);
 		flex: 0 0 auto;
-		font-weight: 800;
+		display: flex;
+		align-items: center;
+		height: 1.5em;
 	}
 	.stack-wrap {
 		margin-top: 24px;

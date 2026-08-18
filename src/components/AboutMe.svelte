@@ -2,6 +2,7 @@
 	import { fly } from 'svelte/transition';
 	import Modal from './Modal.svelte';
 	import CloseButton from './CloseButton.svelte';
+	import Icon from './Icon.svelte';
 	import { closeModal } from '$lib/portfolio';
 	import logo from '$lib/images/logo.png';
 
@@ -40,17 +41,17 @@
 
 	<div class="tabs">
 		<button class="tab" class:active={mode === 'done'} on:click={() => (mode = 'done')}>
-			What I&rsquo;ve done
+			<Icon name="check" size={15} /> What I&rsquo;ve done
 		</button>
 		<button class="tab" class:active={mode === 'aim'} on:click={() => (mode = 'aim')}>
-			What I aim to do
+			<Icon name="target" size={15} /> What I aim to do
 		</button>
 	</div>
 
 	<div class="list">
 		{#each items[mode] as text, i (mode + i)}
 			<div class="item" in:fly={{ y: 12, duration: 320, delay: i * 60 }}>
-				<span class="dot" />
+				<span class="item-icon"><Icon name={mode === 'done' ? 'check' : 'target'} size={16} /></span>
 				<span>{text}</span>
 			</div>
 		{/each}
@@ -106,6 +107,9 @@
 		margin-bottom: 18px;
 	}
 	.tab {
+		display: inline-flex;
+		align-items: center;
+		gap: 7px;
 		padding: 7px 16px;
 		border-radius: 99px;
 		border: none;
@@ -136,15 +140,19 @@
 		background: var(--tile2);
 		border: 1px solid var(--bd);
 	}
-	.item span:not(.dot) {
+	.item span:not(.item-icon) {
 		font-size: 16px;
 		font-weight: 600;
 	}
-	.dot {
-		width: 10px;
-		height: 10px;
-		border-radius: 4px;
-		background: var(--accent);
+	.item-icon {
+		width: 28px;
+		height: 28px;
 		flex: 0 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 9px;
+		color: var(--accent);
+		background: color-mix(in srgb, var(--accent) 16%, transparent);
 	}
 </style>
