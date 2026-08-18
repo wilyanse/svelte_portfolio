@@ -1,10 +1,14 @@
 {
-    "Data optimization": "imageurl",
-    "OCR": "",
-    "Dota 2": "",
-    "Hades": "",
-    "Gym": "",
-    "Nutrition": "",
-    "Skincare": "",
-    "Queen of Tears": ""
+    "skills": [
+        "Data Optimization",
+        "OCR"
+    ],
+    "interests": [
+        "Dota 2",
+        "Hades",
+        "Gym",
+        "Nutrition",
+        "Skincare",
+        "Queen of Tears"
+    ]
 }

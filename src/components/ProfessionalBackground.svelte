@@ -1,108 +1,269 @@
 <script lang="ts">
-	import Wrapper from "./Wrapper.svelte";
-    import workData from "$lib/data/work_exp.json";
-    import educData from "$lib/data/education.json";
-	import { popup, type PopupSettings } from "@skeletonlabs/skeleton";
+	import { fly } from 'svelte/transition';
+	import Modal from './Modal.svelte';
+	import CloseButton from './CloseButton.svelte';
+	import { closeModal } from '$lib/portfolio';
+	import workData from '$lib/data/work_exp.json';
+	import educData from '$lib/data/education.json';
 
-    const popupHover: PopupSettings = {
-        event: 'hover',
-        target: 'popupHover',
-        placement: 'top'
-    };
+	type Entry = {
+		title: string;
+		sub: string;
+		dates: string;
+		details: string[];
+		stack: string[];
+	};
+
+	// Sort by numeric key so the most recent entry (lowest key, e.g. "-1") leads.
+	const byKey = <T>(obj: Record<string, T>): T[] =>
+		Object.entries(obj)
+			.sort((a, b) => Number(a[0]) - Number(b[0]))
+			.map(([, v]) => v);
+
+	const work: Entry[] = byKey(workData).map((w) => ({
+		title: w.position,
+		sub: w.company,
+		dates: `${w.start_date} – ${w.end_date}`,
+		details: w.details,
+		stack: (w as { stack?: string[] }).stack ?? []
+	}));
+
+	const education: Entry[] = byKey(educData).map((e) => ({
+		title: e.level,
+		sub: e.school,
+		dates: `${e.start_date} – ${e.end_date}`,
+		details: e.details,
+		stack: []
+	}));
+
+	let tab: 'work' | 'education' = 'work';
+	let index = 0;
+
+	$: list = tab === 'work' ? work : education;
+	$: detail = list[Math.min(index, list.length - 1)] ?? list[0];
+
+	function setTab(next: 'work' | 'education') {
+		tab = next;
+		index = 0;
+	}
 </script>
-<Wrapper id="Professional Background">
-    <div class="max-w-full max-h-screen p-2.5 flex flex-col gap-4 place-items-center">
-        <div class="variant-ghost-secondary p-10 self-center mx-auto card-hover">
-            <h1>PROFESSIONAL BACKGROUND</h1>
-        </div>
-        <div class="max-w-screen-lg">
-            <h2>Work Experience</h2>
-            <div class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex gap-4 overflow-x-auto px-4 py-3">
-                {#each Object.entries(workData) as [id, fields]}
-                    <div class="snap-start shrink-0 card py-5 w-80 text-center variant variant-ghost-primary">
-                        <header class="card-header">
-                            <h3>
-                                {fields.position}
-                            </h3>
-                        </header>
-                        <section class="p-4 space-y-1.5">
-                            <h4>{fields.company}</h4>
-                            <h4>{fields.start_date} - {fields.end_date}</h4>
-                        </section>
-                        <footer class="card-footer">
-                            <button class="card-hover variant-soft-tertiary px-5 rounded-lg flex flex-row space-x-5 mx-auto [&>*]:pointer-events-none" use:popup={{ event: 'hover', target: 'work-' + id, placement: 'top' }}>
-                                <svg class="h-8 w-8 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <circle cx="12" cy="12" r="1" />  <circle cx="19" cy="12" r="1" />  <circle cx="5" cy="12" r="1" /></svg>
-                            </button>
-                            <div class="card p-10 variant-filled-primary space-y-5" data-popup="work-{id}">
-                                {#each fields.details as detail}
-                                    <p>• {detail}</p>
-                                {/each}
-                                <p>
-                                    <strong>Tech stack: </strong>
-                                    {#each fields.stack as tech}
-                                        {tech}•
-                                    {/each}
-                                </p>
-                                <div class="arrow variant-filled-primary" />
-                            </div>
-                        </footer>
-                    </div>
-                {/each}
-            </div>            
-        </div>
-        <div class="max-w-screen-lg">
-            <h2>Education</h2>
-            <div class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex gap-4 overflow-x-auto px-4 py-3">
-                {#each Object.entries(educData) as [id, fields]}
-                    <div class="snap-start shrink-0 card py-5 w-80 text-center variant variant-ghost-primary">
-                        <header class="card-header">
-                            <h3>
-                                {fields.level}
-                            </h3>
-                        </header>
-                        <section class="p-4 space-y-1.5">
-                            <h4>{fields.school}</h4>
-                            <h4>{fields.start_date} - {fields.end_date}</h4>
-                        </section>
-                        <footer class="card-footer">
-                            <button class="card-hover variant-soft-tertiary px-5 rounded-lg flex flex-row space-x-5 py-1 mx-auto [&>*]:pointer-events-none" use:popup={{ event: 'hover', target: 'educ-' + id, placement: 'top' }}>
-                                <svg class="h-8 w-8 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <circle cx="12" cy="12" r="1" />  <circle cx="19" cy="12" r="1" />  <circle cx="5" cy="12" r="1" /></svg>
-                            </button>
-                            <div class="card p-10 variant-filled-primary space-y-5" data-popup="educ-{id}">
-                                {#each fields.details as detail}
-                                    <p>• {detail}</p>
-                                {/each}
-                                <div class="arrow variant-filled-primary" />
-                            </div>
-                        </footer>
-                    </div>
-                {/each}
-            </div>  
-        </div>
-        <div>
-            <a href="#Projects" class="btn variant-ghost-secondary text-xl font-bold self-center mx-auto">What about my personal projects?</a>
-        </div>
-    </div>
-</Wrapper>
+
+<Modal width="940px" layout="flex" on:close={closeModal}>
+	<div class="head">
+		<div class="head-left">
+			<div class="eyebrow">02 &mdash; BACKGROUND</div>
+			<div class="switch">
+				<button class="seg" class:active={tab === 'work'} on:click={() => setTab('work')}>Work</button>
+				<button class="seg" class:active={tab === 'education'} on:click={() => setTab('education')}>
+					Education
+				</button>
+			</div>
+		</div>
+		<CloseButton on:close={closeModal} />
+	</div>
+
+	<div class="body">
+		<div class="master">
+			{#each list as entry, i (tab + i)}
+				<button class="entry" class:active={index === i} on:click={() => (index = i)}>
+					<span class="entry-title">{entry.title}</span>
+					<span class="entry-sub">{entry.sub}</span>
+					<span class="entry-dates">{entry.dates}</span>
+				</button>
+			{/each}
+		</div>
+
+		{#key tab + index}
+			<div class="detail" in:fly={{ y: 10, duration: 300 }}>
+				<div class="detail-dates">{detail.dates}</div>
+				<h2 class="detail-title">{detail.title}</h2>
+				<div class="detail-sub">{detail.sub}</div>
+				<div class="details-list">
+					{#each detail.details as d}
+						<div class="detail-row">
+							<span class="dash">&mdash;</span>
+							<span>{d}</span>
+						</div>
+					{/each}
+				</div>
+				{#if detail.stack.length}
+					<div class="stack-wrap">
+						<div class="stack-label">TECH STACK</div>
+						<div class="stack">
+							{#each detail.stack as t}
+								<span class="chip">{t}</span>
+							{/each}
+						</div>
+					</div>
+				{/if}
+			</div>
+		{/key}
+	</div>
+</Modal>
 
 <style lang="postcss">
-    h1 {
-        @apply font-bold text-5xl h1;
-    }
+	.head {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 20px;
+	}
+	.head-left {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		flex-wrap: wrap;
+	}
+	.eyebrow {
+		font-family: 'JetBrains Mono', monospace;
+		font-size: 11px;
+		letter-spacing: 0.16em;
+		color: var(--accent);
+	}
+	.switch {
+		display: flex;
+		gap: 6px;
+		padding: 4px;
+		border-radius: 99px;
+		background: var(--tile2);
+		border: 1px solid var(--bd);
+	}
+	.seg {
+		padding: 7px 16px;
+		border-radius: 99px;
+		border: none;
+		background: transparent;
+		color: var(--tx2);
+		font-weight: 600;
+		font-size: 12px;
+		cursor: pointer;
+		font-family: inherit;
+		transition: all 0.15s;
+	}
+	.seg.active {
+		background: var(--accent);
+		color: var(--accent-ink);
+		font-weight: 700;
+	}
 
-    h2 {
-        @apply h2 text-xl font-semibold;
-    }
+	.body {
+		display: grid;
+		grid-template-columns: 300px 1fr;
+		gap: 20px;
+		min-height: 0;
+		flex: 1;
+	}
+	.master {
+		overflow: auto;
+		display: flex;
+		flex-direction: column;
+		gap: 9px;
+		padding-right: 6px;
+	}
+	.entry {
+		text-align: left;
+		cursor: pointer;
+		font-family: inherit;
+		color: var(--tx);
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		padding: 13px 15px;
+		border-radius: 15px;
+		background: var(--tile2);
+		border: 1px solid var(--bd);
+		transition: border-color 0.16s, transform 0.16s;
+	}
+	.entry:hover {
+		border-color: color-mix(in srgb, var(--accent) 50%, var(--bd));
+	}
+	.entry.active {
+		border-color: var(--accent);
+		transform: translateX(3px);
+	}
+	.entry-title {
+		font-weight: 700;
+		font-size: 14px;
+	}
+	.entry-sub {
+		font-size: 12px;
+		color: var(--tx2);
+	}
+	.entry-dates {
+		font-family: 'JetBrains Mono', monospace;
+		font-size: 10px;
+		color: var(--tx2);
+		margin-top: 2px;
+	}
 
-    h3 {
-        @apply h3 text-lg font-semibold;
-    }
+	.detail {
+		overflow: auto;
+		padding: 4px 8px 4px 4px;
+	}
+	.detail-dates {
+		font-family: 'JetBrains Mono', monospace;
+		font-size: 11px;
+		color: var(--accent);
+		margin-bottom: 6px;
+	}
+	.detail-title {
+		margin: 0;
+		font-size: 26px;
+		font-weight: 800;
+		letter-spacing: -0.01em;
+		line-height: 1.1;
+	}
+	.detail-sub {
+		font-size: 15px;
+		color: var(--tx2);
+		margin-top: 5px;
+		margin-bottom: 22px;
+	}
+	.details-list {
+		display: flex;
+		flex-direction: column;
+		gap: 13px;
+	}
+	.detail-row {
+		display: flex;
+		gap: 12px;
+		font-size: 14.5px;
+		line-height: 1.5;
+	}
+	.dash {
+		color: var(--accent);
+		flex: 0 0 auto;
+		font-weight: 800;
+	}
+	.stack-wrap {
+		margin-top: 24px;
+	}
+	.stack-label {
+		font-size: 12px;
+		font-weight: 700;
+		color: var(--tx2);
+		margin-bottom: 10px;
+	}
+	.stack {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+	.chip {
+		font-family: 'JetBrains Mono', monospace;
+		font-size: 12px;
+		padding: 6px 12px;
+		border-radius: 99px;
+		background: color-mix(in srgb, var(--accent) 16%, transparent);
+		border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
+	}
 
-    h4 {
-        @apply h4 text-base italic;
-    }
-
-    p {
-        @apply h4 text-base text-left;
-    }
+	@media (max-width: 720px) {
+		.body {
+			grid-template-columns: 1fr;
+		}
+		.master {
+			max-height: 30vh;
+		}
+	}
 </style>
