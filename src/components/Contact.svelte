@@ -16,7 +16,7 @@
 	const contacts: Contact[] = [
 		{ icon: 'in', label: 'LinkedIn', value: '/in/wilyanse', hint: 'open', type: 'link', target: 'https://www.linkedin.com/in/wilyanse/' },
 		{ icon: '@', label: 'Email', value: 'willjose51@gmail.com', hint: 'copy', type: 'copy', target: 'willjose51@gmail.com' },
-		{ icon: '#', label: 'Phone', value: '+63 945 669 8794', hint: 'copy', type: 'copy', target: '+639456698794' },
+		{ icon: '#', label: 'Phone', value: '+63 939 198 6763', hint: 'copy', type: 'copy', target: '+639391986763' },
 		{ icon: 'S', label: 'Skype', value: 'join.skype.com', hint: 'open', type: 'link', target: 'https://join.skype.com/invite/tHKbT7LoOati' },
 		{ icon: 'X', label: 'Twitter / X', value: '@Wilyanse', hint: 'open', type: 'link', target: 'https://x.com/Wilyanse' },
 		{ icon: 'D', label: 'Discord', value: 'wilyanse', hint: 'copy', type: 'copy', target: 'wilyanse' }
