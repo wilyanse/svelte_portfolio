@@ -14,6 +14,26 @@
 		stack: string[];
 	};
 
+	// An evocative icon per project, chosen from its name/description/keywords.
+	const projectIcons: Record<string, string> = {
+		'Bagyo Ka Lang, Pinoy Kami': 'cloud-rain',
+		ReciKeep: 'link-2',
+		'Toxic Speech Classifier': 'brain',
+		IwasSingko: 'gamepad-2',
+		ReciPeek: 'cpu',
+		'Downloads Sorter': 'folder',
+		'Portfolio Website': 'globe',
+		'Developer Blog': 'book-open',
+		'Automated TikTok Vlog Creator': 'video'
+	};
+	const iconForProject = (p: Project): string =>
+		projectIcons[p.name] ??
+		(p.keywords.includes('Game Development')
+			? 'gamepad-2'
+			: p.keywords.includes('Data Science')
+				? 'bar-chart'
+				: 'folder');
+
 	const projects: Project[] = Object.values(projectsData) as Project[];
 
 	const filterOptions: { label: string; icon: string }[] = [
@@ -29,9 +49,7 @@
 	let active: string[] = [];
 
 	function toggle(filter: string) {
-		active = active.includes(filter)
-			? active.filter((f) => f !== filter)
-			: [...active, filter];
+		active = active.includes(filter) ? active.filter((f) => f !== filter) : [...active, filter];
 	}
 
 	$: view = active.length
@@ -50,7 +68,8 @@
 						class:active={active.includes(f.label)}
 						on:click={() => toggle(f.label)}
 					>
-						<Icon name={f.icon} size={13} /> {f.label}
+						<Icon name={f.icon} size={13} />
+						{f.label}
 					</button>
 				{/each}
 			</div>
@@ -68,6 +87,7 @@
 				in:fly={{ y: 16, duration: 320, delay: i * 45 }}
 			>
 				<div class="card-head">
+					<span class="card-icon"><Icon name={iconForProject(p)} size={18} /></span>
 					<span class="card-name">{p.name}</span>
 					<span class="arrow"><Icon name="arrow-up-right" size={16} /></span>
 				</div>
@@ -149,7 +169,10 @@
 		border: 1px solid var(--bd);
 		color: var(--tx);
 		text-decoration: none;
-		transition: transform 0.16s, border-color 0.16s, box-shadow 0.16s;
+		transition:
+			transform 0.16s,
+			border-color 0.16s,
+			box-shadow 0.16s;
 	}
 	.card:hover {
 		transform: translateY(-4px);
@@ -162,10 +185,17 @@
 		justify-content: space-between;
 		gap: 8px;
 	}
+	.card-icon {
+		color: var(--accent);
+		flex: 0 0 auto;
+		display: inline-flex;
+		margin-top: 1px;
+	}
 	.card-name {
 		font-weight: 800;
 		font-size: 15px;
 		line-height: 1.15;
+		margin-right: auto;
 	}
 	.arrow {
 		color: var(--accent);
