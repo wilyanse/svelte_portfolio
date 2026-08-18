@@ -1,4 +1,51 @@
 {
+    "-3": {
+        "position": "Cloud Engineer",
+        "company": "Elevate Innovations Corp",
+        "start_date": "November 2025",
+        "end_date": "June 2026",
+        "details": [
+            "Designed and delivered cloud-based business solutions across AWS, collaborating on scalable backend services and infrastructure supporting multiple production applications while improving deployment consistency and system reliability.",
+            "Led the development and optimization of automated data processing and reporting solutions, consolidating data from 10+ sources and generating reports containing 100,000+ records, reducing manual processing time while improving reporting accuracy and consistency.",
+            "Designed and enhanced enterprise data management solutions for financial operations, implementing and maintaining 20+ APIs and database workflows that supported high-volume transaction processing while improving data quality and operational efficiency.",
+            "Planned and implemented scalable system architectures across cloud services, databases, and application platforms, contributing to the design of 15+ interconnected components and deployment pipelines that improved scalability, monitoring, and long-term maintainability.",
+            "Supported the delivery and stability of production cloud environments by leading root-cause analysis and infrastructure improvements across 30+ production issues and enhancement requests, helping increase platform reliability and reducing recurring operational incidents."
+        ],
+        "stack": [
+            "AWS",
+            "Terraform",
+            "Python",
+            ".NET/C#",
+            "Entity Framework Core",
+            "PostgreSQL",
+            "SQL",
+            "Docker",
+            "REST APIs",
+            "Git"
+        ]
+    },
+    "-2": {
+        "position": "Software Developer",
+        "company": "Apollo Global Corporation",
+        "start_date": "October 2024",
+        "end_date": "November 2025",
+        "details": [
+            "Built and deployed a web app using Quasar (Vue 3), Spring Boot, MySQL, PostgreSQL, and Keycloak, containerized with Docker, and deployed on Kubernetes Rancher, enabling scalable architecture for 10+ RESTful microservices.",
+            "Designed and implemented CI/CD workflows with GitHub Actions, automating code checks and deployments to a private Docker registry, reducing deployment time by 40%, and ensuring consistent delivery.",
+            "Developed and maintained 20+ pages of technical documentation, covering system architecture, API endpoints, and authentication workflows, cutting onboarding time for new developers by 50% and improving sprint predictability by 30%."
+        ],
+        "stack": [
+            "Quasar",
+            "Vue 3",
+            "Spring Boot",
+            "MySQL",
+            "PostgreSQL",
+            "Keycloak",
+            "Docker",
+            "Kubernetes",
+            "GitHub Actions"
+        ]
+    },
     "-1": {
         "position": "Fullstack Developer",
         "company": "UP Intelligent Transportation Systems Laboratory",
@@ -6,7 +53,7 @@
         "end_date": "August 2024",
         "details": [
             "Design and develop interactive mockups using Figma, enhancing existing wireframes and improving user experience for 3+ major projects",
-            "Creat and manage a PostgreSQL database model on the cloud to store inputs for a ship routing system, accessed and manipulated via custom Python scripts",
+            "Create and manage a PostgreSQL database model on the cloud to store inputs for a ship routing system, accessed and manipulated via custom Python scripts",
             "Lead QA efforts for a team of 5, ensuring high-quality outputs and reducing errors by 20% through rigorous testing protocols"
         ],
         "stack": [
@@ -22,7 +69,7 @@
     },
     "0": {
         "position": "Data Engineering Intern",
-        "company": "Anino Inc.",
+        "company": "Anino, Inc.",
         "start_date": "August 2023",
         "end_date": "September 2023",
         "details": [
@@ -38,7 +85,8 @@
             "Firebase",
             "Firestore",
             "Unity",
-            "Circle CI"
+            "Circle CI",
+            "GitHub Actions"
         ]
     },
     "1": {
