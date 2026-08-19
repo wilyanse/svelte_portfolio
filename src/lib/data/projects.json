@@ -93,11 +93,12 @@
     },
     "6": {
         "name": "Portfolio Website",
-        "desc": "This very website! Fully developed and designed by me with the help of SvelteKit, SkeletonUI, and JSON files as the (temporary) data management system.",
+        "desc": "This very website! Fully designed and built by me with SvelteKit, TypeScript, and hand-rolled CSS, with JSON files as the (temporary) data management system.",
         "link": "https://github.com/wilyanse/svelte_portfolio",
         "stack": [
             "SvelteKit",
-            "SkeletonUI"
+            "TypeScript",
+            "CSS"
         ],
         "keywords": [
             "Web Development"

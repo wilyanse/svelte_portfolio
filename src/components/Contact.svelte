@@ -23,14 +23,11 @@
 		{ icon: 'discord', label: 'Discord', value: 'wilyanse', hint: 'copy', type: 'copy', target: 'wilyanse' }
 	];
 
-	function activate(c: Contact) {
-		if (c.type === 'copy') copyToClipboard(c.target, c.label);
-		else window.open(c.target, '_blank', 'noopener');
-	}
 </script>
 
 <Modal
 	width="680px"
+	label="Contact"
 	background="linear-gradient(160deg, color-mix(in srgb, var(--accent) 14%, transparent), var(--bg2) 55%)"
 	on:close={closeModal}
 >
@@ -44,7 +41,21 @@
 
 	<div class="grid">
 		{#each contacts as c, i}
-			<button class="contact" on:click={() => activate(c)} in:scale={{ duration: 240, start: 0.92, delay: i * 45 }}>
+			<!-- svelte:element resolves to <a> or <button>, both interactive — no explicit role needed. -->
+			<!-- svelte-ignore a11y-no-static-element-interactions -->
+			<svelte:element
+				this={c.type === 'link' ? 'a' : 'button'}
+				class="contact"
+				href={c.type === 'link' ? c.target : undefined}
+				target={c.type === 'link' ? '_blank' : undefined}
+				rel={c.type === 'link' ? 'noopener noreferrer' : undefined}
+				type={c.type === 'copy' ? 'button' : undefined}
+				aria-label={c.type === 'copy'
+					? `Copy ${c.label}: ${c.value}`
+					: `Open ${c.label} (opens in a new tab)`}
+				on:click={() => c.type === 'copy' && copyToClipboard(c.target, c.label)}
+				in:scale={{ duration: 240, start: 0.92, delay: i * 45 }}
+			>
 				<span class="icon"><Icon name={c.icon} size={20} /></span>
 				<span class="text">
 					<span class="c-label">{c.label}</span>
@@ -53,7 +64,7 @@
 				<span class="hint" title={c.hint === 'copy' ? 'Click to copy' : 'Open link'}>
 					<Icon name={c.hint === 'copy' ? 'copy' : 'external-link'} size={15} />
 				</span>
-			</button>
+			</svelte:element>
 		{/each}
 	</div>
 </Modal>
@@ -91,6 +102,7 @@
 		cursor: pointer;
 		font-family: inherit;
 		color: var(--tx);
+		text-decoration: none;
 		display: flex;
 		align-items: center;
 		gap: 14px;

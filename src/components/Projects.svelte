@@ -36,15 +36,32 @@
 
 	const projects: Project[] = Object.values(projectsData) as Project[];
 
-	const filterOptions: { label: string; icon: string }[] = [
-		{ label: 'Data Science', icon: 'target' },
-		{ label: 'Web Development', icon: 'code' },
-		{ label: 'Machine Learning', icon: 'sparkles' },
-		{ label: 'Game Development', icon: 'terminal' },
-		{ label: 'Blockchain', icon: 'code' },
-		{ label: 'IOT', icon: 'map-pin' },
-		{ label: 'Automation', icon: 'check' }
-	];
+	// Icon per keyword; anything unmapped falls back to a generic one.
+	const keywordIcons: Record<string, string> = {
+		'Data Science': 'bar-chart',
+		'Data Engineering': 'database',
+		'Web Development': 'globe',
+		'Machine Learning': 'brain',
+		'Artificial Intelligence': 'sparkles',
+		'Game Development': 'gamepad-2',
+		'Software Engineering': 'code',
+		Blockchain: 'link-2',
+		IOT: 'cpu',
+		'Embedded System': 'cpu',
+		Automation: 'workflow',
+		Scripting: 'terminal',
+		'Naive Bayes': 'target'
+	};
+
+	// Derive the filter list from the data itself so it can never drift out of
+	// sync with the projects' keywords. Ordered by how many projects use each.
+	const keywordCounts = projects.reduce<Record<string, number>>((acc, p) => {
+		for (const k of p.keywords) acc[k] = (acc[k] ?? 0) + 1;
+		return acc;
+	}, {});
+	const filterOptions: { label: string; icon: string }[] = Object.keys(keywordCounts)
+		.sort((a, b) => keywordCounts[b] - keywordCounts[a] || a.localeCompare(b))
+		.map((label) => ({ label, icon: keywordIcons[label] ?? 'code' }));
 
 	let active: string[] = [];
 
@@ -57,7 +74,7 @@
 		: projects;
 </script>
 
-<Modal width="1040px" layout="flex" on:close={closeModal}>
+<Modal width="1040px" layout="flex" label="Projects" on:close={closeModal}>
 	<div class="head">
 		<div>
 			<div class="eyebrow">03 &mdash; PROJECTS</div>

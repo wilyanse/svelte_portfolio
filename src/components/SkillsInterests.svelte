@@ -51,7 +51,7 @@
 	};
 </script>
 
-<Modal width="720px" on:close={closeModal}>
+<Modal width="720px" label="Skills &amp; interests" on:close={closeModal}>
 	<div class="head">
 		<div class="eyebrow">04 &mdash; SKILLS &amp; INTERESTS</div>
 		<CloseButton on:close={closeModal} />

@@ -1,13 +1,62 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@tailwind variants;
-
-html {
-	@apply h-full;
+/* Minimal reset (replaces the old Tailwind preflight). */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+* {
+	margin: 0;
+}
+button,
+input,
+select,
+textarea {
+	font: inherit;
+	color: inherit;
+}
+img,
+svg {
+	max-width: 100%;
 }
 
+html {
+	height: 100%;
+}
 body {
-	@apply min-h-full;
+	min-height: 100%;
 	overflow-x: hidden;
+}
+
+/* Theme tokens live on :root so an inline <head> script can set
+   data-theme before first paint (no flash of the wrong theme).
+   Default (no attribute / data-theme="dark") = dark. */
+:root {
+	--bg1: #191919;
+	--bg2: #242424;
+	--tile: rgba(255, 255, 255, 0.04);
+	--tile2: rgba(255, 255, 255, 0.07);
+	--bd: rgba(255, 255, 255, 0.1);
+	--tx: #ededed;
+	--tx2: #9c9c9c;
+	--teal: #7fb7be;
+	--gold: #d4c5a1;
+	--accent: #22d3e6;
+	--accent-ink: #06232a;
+	--blob: 0.55;
+	color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+	--bg1: #e7e7ea;
+	--bg2: #f5f5f6;
+	--tile: rgba(255, 255, 255, 0.72);
+	--tile2: #ffffff;
+	--bd: rgba(0, 0, 0, 0.09);
+	--tx: #242424;
+	--tx2: #5c5c5c;
+	--teal: #1d6d77;
+	--gold: #8a7647;
+	--accent: #0b9aa6;
+	--blob: 0.3;
+	color-scheme: light;
 }

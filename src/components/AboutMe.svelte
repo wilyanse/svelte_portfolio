@@ -22,7 +22,7 @@
 	let mode: 'done' | 'aim' = 'done';
 </script>
 
-<Modal width="760px" on:close={closeModal}>
+<Modal width="760px" label="About Me" on:close={closeModal}>
 	<div class="head">
 		<div class="eyebrow">01 &mdash; ABOUT ME</div>
 		<CloseButton on:close={closeModal} />

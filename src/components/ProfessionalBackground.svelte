@@ -69,7 +69,7 @@
 	}
 </script>
 
-<Modal width="940px" layout="flex" on:close={closeModal}>
+<Modal width="940px" layout="flex" label="Background — work &amp; education" on:close={closeModal}>
 	<div class="head">
 		<div class="head-left">
 			<div class="eyebrow">02 &mdash; BACKGROUND</div>

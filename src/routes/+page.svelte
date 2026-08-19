@@ -52,9 +52,7 @@
 		'an Urban Revivo fanatic',
 		'a sweets enjoyer',
 		'a laagan',
-		'a masochist',
-		'a genetically balding man',
-		'someone whose chronically online',
+		'someone who is chronically online',
 		'a lazy person',
 		'a switch owner',
 		'a Hololive enthusiast',
@@ -65,12 +63,8 @@
 		'a washed dota player',
 		'an ability draft enjoyer',
 		'a lazy tiktok vlogger',
-		'a gambling addict',
 		'an efficiency enjoyer',
-		'a former alcoholic',
-		'a big back',
 		'a food enjoyer',
-		'a former obese boy',
 		'a giant weeb',
 		'a dairy queen addict',
 		'a chronic walker',
@@ -173,7 +167,7 @@
 
 <svelte:window on:keydown={onKey} />
 
-<div class="app" data-theme={$theme}>
+<div class="app">
 	<!-- ambient blobs -->
 	<div class="blobs" aria-hidden="true">
 		<div class="blob blob1" />
@@ -263,24 +257,12 @@
 
 <style lang="postcss">
 	.app {
-		--bg1: #191919;
-		--bg2: #242424;
-		--tile: rgba(255, 255, 255, 0.04);
-		--tile2: rgba(255, 255, 255, 0.07);
-		--bd: rgba(255, 255, 255, 0.1);
-		--tx: #ededed;
-		--tx2: #9c9c9c;
-		--teal: #7fb7be;
-		--gold: #d4c5a1;
-		--accent: #22d3e6;
-		--accent-ink: #06232a;
-		--blob: 0.55;
-		color-scheme: dark;
-
 		position: relative;
-		height: 100vh;
-		width: 100vw;
-		overflow: hidden;
+		/* min-height (not fixed height) + document scroll so short viewports
+		   never clip the hero or launchers. */
+		min-height: 100vh;
+		width: 100%;
+		overflow-x: hidden;
 		display: flex;
 		flex-direction: column;
 		gap: 18px;
@@ -289,21 +271,6 @@
 		font-size: 15px;
 		color: var(--tx);
 		background: radial-gradient(140% 120% at 15% 0%, var(--bg2), var(--bg1) 60%);
-	}
-
-	.app[data-theme='light'] {
-		--bg1: #e7e7ea;
-		--bg2: #f5f5f6;
-		--tile: rgba(255, 255, 255, 0.72);
-		--tile2: #ffffff;
-		--bd: rgba(0, 0, 0, 0.09);
-		--tx: #242424;
-		--tx2: #5c5c5c;
-		--teal: #1d6d77;
-		--gold: #8a7647;
-		--accent: #0b9aa6;
-		--blob: 0.3;
-		color-scheme: light;
 	}
 
 	.accent {
@@ -415,6 +382,7 @@
 	.hero {
 		position: relative;
 		overflow: hidden;
+		min-height: 340px;
 		border: 1px solid var(--bd);
 		border-radius: 30px;
 		background: linear-gradient(
@@ -673,19 +641,37 @@
 
 	/* responsive */
 	@media (max-width: 900px) {
-		.app {
-			height: auto;
-			min-height: 100vh;
-			overflow: auto;
-		}
 		.launchers {
 			grid-template-columns: repeat(2, 1fr);
 		}
+		/* Stack the hero and keep the portrait (as a centred avatar) instead of hiding it. */
+		.hero {
+			flex-direction: column;
+			align-items: stretch;
+			padding: 28px clamp(24px, 5vw, 48px) 32px;
+			gap: 20px;
+		}
 		.hero-copy {
 			max-width: 100%;
+			order: 2;
 		}
 		.portrait-parallax {
-			display: none;
+			position: static;
+			order: 1;
+			align-self: center;
+			top: auto;
+			right: auto;
+			transform: none !important;
+			transition: none;
+		}
+		.portrait-float {
+			height: auto;
+			justify-content: center;
+		}
+		.portrait-float img {
+			height: auto;
+			max-width: min(62vw, 230px);
+			max-height: 230px;
 		}
 	}
 	@media (max-width: 480px) {
@@ -699,7 +685,9 @@
 
 	@media (prefers-reduced-motion: reduce) {
 		.blob,
-		.portrait-float {
+		.portrait-float,
+		.hero,
+		.rise {
 			animation: none;
 		}
 		.portrait-parallax {
