@@ -24,7 +24,9 @@
 		'Downloads Sorter': 'folder',
 		'Portfolio Website': 'globe',
 		'Developer Blog': 'book-open',
-		'Automated TikTok Vlog Creator': 'video'
+		'Automated TikTok Vlog Creator': 'video',
+		'Meal Optimizer': 'apple',
+		Triviadle: 'gamepad-2'
 	};
 	const iconForProject = (p: Project): string =>
 		projectIcons[p.name] ??
@@ -50,7 +52,8 @@
 		'Embedded System': 'cpu',
 		Automation: 'workflow',
 		Scripting: 'terminal',
-		'Naive Bayes': 'target'
+		'Naive Bayes': 'target',
+		'Linear Optimization': 'target'
 	};
 
 	// Derive the filter list from the data itself so it can never drift out of

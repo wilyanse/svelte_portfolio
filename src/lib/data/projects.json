@@ -131,5 +131,44 @@
             "Data Engineering",
             "Automation"
         ]
+    },
+    "9": {
+        "name": "Meal Optimizer",
+        "desc": "A web app that solves a linear program live in the browser to hit your daily macro targets (protein, fiber, energy, potassium) for the least money. Log what you've already eaten — or photograph your plate to have a local vision model estimate the macros — and it re-solves for the cheapest way to finish the day. Ported from a PuLP/CBC Jupyter notebook to a JavaScript simplex solver, with an optional FastAPI backend for accounts, sync, and photo scanning.",
+        "link": "https://github.com/wilyanse/meal-optimizer",
+        "stack": [
+            "React",
+            "TypeScript",
+            "Vite",
+            "javascript-lp-solver",
+            "FastAPI",
+            "Ollama"
+        ],
+        "keywords": [
+            "Web Development",
+            "Linear Optimization",
+            "Machine Learning",
+            "Data Science"
+        ]
+    },
+    "10": {
+        "name": "Triviadle",
+        "desc": "A daily trivia x Wordle game: one shared question a day, five guesses, with progressive per-letter feedback and clues that ramp up each turn. Includes accounts, streaks and stats, opt-in practice modes, and a community-driven, scraped-and-LLM-generated question pipeline. Built as a monorepo with a React SPA and a FastAPI + PostgreSQL backend, deployed to AWS via Terraform.",
+        "link": "https://github.com/wilyanse/trivia-dle",
+        "stack": [
+            "React",
+            "TypeScript",
+            "Vite",
+            "FastAPI",
+            "PostgreSQL",
+            "Terraform",
+            "AWS"
+        ],
+        "keywords": [
+            "Web Development",
+            "Game Development",
+            "Data Engineering",
+            "Artificial Intelligence"
+        ]
     }
 }
